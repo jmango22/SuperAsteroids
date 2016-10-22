@@ -1,5 +1,8 @@
 package edu.byu.cs.superasteroids.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by Jon on 10/10/2016.
  * Contains information describing a power core part of the ship
@@ -15,10 +18,10 @@ public class PowerCore {
         this.image = image;
     }
 
-    public PowerCore(PowerCore core) {
-        this.cannonBoost = core.getCannonBoost();
-        this.engineBoost = core.getEngineBoost();
-        this.image = core.getImage();
+    public PowerCore(JSONObject core) throws JSONException{
+        this.cannonBoost = core.getInt("cannonBoost");
+        this.engineBoost = core.getInt("engineBoost");
+        this.image = core.getString("image");
     }
 
     public int getCannonBoost() {

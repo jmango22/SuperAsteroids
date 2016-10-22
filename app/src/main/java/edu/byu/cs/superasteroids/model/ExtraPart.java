@@ -1,5 +1,8 @@
 package edu.byu.cs.superasteroids.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by Jon on 10/10/2016.
  */
@@ -14,6 +17,13 @@ public class ExtraPart {
         this.image = image;
         this.imageWidth = imageWidth;
         this.imageHeight = imageHeight;
+    }
+
+    public ExtraPart(JSONObject extraPart) throws JSONException {
+        this.attach_point = extraPart.getString("attachPoint");
+        this.image = extraPart.getString("image");
+        this.imageWidth = extraPart.getInt("imageWidth");
+        this.imageHeight = extraPart.getInt("imageHeight");
     }
 
     public String getAttach_point() {

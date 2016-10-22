@@ -1,5 +1,8 @@
 package edu.byu.cs.superasteroids.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by Jon on 10/10/2016.
  */
@@ -18,6 +21,15 @@ public class Engine {
         this.image = image;
         this.imageWidth = imageWidth;
         this.imageHeight = imageHeight;
+    }
+
+    public Engine(JSONObject engine) throws JSONException {
+        this.base_speed = engine.getInt("baseSpeed");
+        this.base_turn_rate = engine.getInt("baseTurnRate");
+        this.attach_point = engine.getString("attachPoint");
+        this.image = engine.getString("image");
+        this.imageWidth = engine.getInt("imageWidth");
+        this.imageHeight = engine.getInt("imageHeight");
     }
 
     public int getBase_speed() {

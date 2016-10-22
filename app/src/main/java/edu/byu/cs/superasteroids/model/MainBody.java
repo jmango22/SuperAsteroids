@@ -1,5 +1,8 @@
 package edu.byu.cs.superasteroids.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by Jon on 10/10/2016.
  * Contains information describing a main body part of the ship
@@ -21,13 +24,13 @@ public class MainBody {
         this.imageHeight = imageHeight;
     }
 
-    public MainBody(MainBody body) {
-        this.connonAttach = body.getConnonAttach();
-        this.engineAttach =  body.getEngineAttach();
-        this.extraAttach = body.getExtraAttach();
-        this.image = body.getImage();
-        this.imageWidth = body.getImageWidth();
-        this.imageHeight = body.getImageHeight();
+    public MainBody(JSONObject body) throws JSONException {
+        this.connonAttach = body.getString("cannonAttach");
+        this.engineAttach = body.getString("engineAttach");
+        this.extraAttach = body.getString("extraAttach");
+        this.image = body.getString("image");
+        this.imageWidth = body.getInt("imageWidth");
+        this.imageHeight = body.getInt("imageHeight");
     }
 
     public String getConnonAttach() {

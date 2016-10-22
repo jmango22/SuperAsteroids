@@ -1,5 +1,8 @@
 package edu.byu.cs.superasteroids.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by Jon on 10/10/2016.
  * Contains information describing an asteroid type
@@ -32,12 +35,15 @@ public class Asteroid {
      * Creates an Asteroid from another Asteroid
      * @param asteroid - Type Asteroid
      */
-    public Asteroid(Asteroid asteroid) {
-        this.name = asteroid.getName();
-        this.image = asteroid.getImage();
-        this.imageWidth = asteroid.getImageWidth();
-        this.imageHeight = asteroid.getImageHeight();
-        this.type = asteroid.getType();
+    public Asteroid(JSONObject asteroid) throws JSONException {
+        this.name = asteroid.getString("name");
+        this.image = asteroid.getString("image");
+        this.imageWidth = asteroid.getInt("imageWidth");
+        this.imageHeight = asteroid.getInt("imageHeight");
+        this.type = asteroid.getString("type");
+
+        System.out.println("Asteroid Create!");
+        System.out.println(toString());
     }
 
     public long getId() {
@@ -86,5 +92,9 @@ public class Asteroid {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String toString() {
+        return "name: "+name+" image: "+image+" imageWidth: "+imageWidth+" imageHeight: "+imageHeight+" type: "+type;
     }
 }

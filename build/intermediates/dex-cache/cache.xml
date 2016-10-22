@@ -1,26 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" >
-
-    <item
-        jar="/users/guest/j/jmeng2/Android/Sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
-        <dex dex="/users/guest/j/jmeng2/Documents/superasteroids/app/build/intermediates/pre-dexed/debug/support-v4-19.1.0_1aaff37caa58abd693d4dd6972776d62ca370596.jar" />
-    </item>
-    <item
-        jar="/users/guest/j/jmeng2/Documents/superasteroids/app/libs/json-simple-1.1.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="5d6f9b6a9ddca2a28c0216cc44efb2e20d9c23b5">
-        <dex dex="/users/guest/j/jmeng2/Documents/superasteroids/app/build/intermediates/pre-dexed/debug/json-simple-1.1.1_b0a228a0485c669d648c352e43de70665af73b5d.jar" />
-    </item>
-    <item
-        jar="/users/guest/j/jmeng2/Documents/superasteroids/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28">
-        <dex dex="/users/guest/j/jmeng2/Documents/superasteroids/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-19.1.0_268e12df7e7074d044745fe305a8eddca1f214e9.jar" />
-    </item>
-
-</items>
+<items version="2" />

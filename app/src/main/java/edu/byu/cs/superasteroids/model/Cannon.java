@@ -1,5 +1,8 @@
 package edu.byu.cs.superasteroids.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by Jon on 10/10/2016.
  * Contains information describing a cannon part of the ship
@@ -29,17 +32,25 @@ public class Cannon {
         this.damage = damage;
     }
 
-    public Cannon(Cannon cannon) {
-        this.attachPoint = cannon.getAttachPoint();
-        this.emitPoint = cannon .getEmitPoint();
-        this.image = cannon.getImage();
-        this.imageWidth = cannon.getImageWidth();
-        this.imageHeight = cannon.getImageHeight();
-        this.attackImage = cannon.getAttackImage();
-        this.attackImageWidth = cannon.getAttackImageWidth();
-        this.attackImageHeight = cannon.getAttackImageHeight();
-        this.attackSound = cannon.getAttackSound();
-        this.damage = cannon.getDamage();
+    public Cannon(JSONObject cannon) throws JSONException{
+        this.attachPoint = cannon.getString("attachPoint");
+        this.emitPoint = cannon.getString("emitPoint");
+        this.image = cannon.getString("image");
+        this.imageWidth = cannon.getInt("imageWidth");
+        this.imageHeight = cannon.getInt("imageHeight");
+        this.attackImage = cannon.getString("attackImage");
+        this.attackImageWidth = cannon.getInt("attackImageWidth");
+        this.attackImageHeight = cannon.getInt("attackImageHeight");
+        this.attackSound = cannon.getString("attackSound");
+        this.damage = cannon.getInt("damage");
+
+        System.out.println("Cannon Created!");
+        System.out.println(toString());
+    }
+
+    public String toString() {
+        return "attachPoint: "+attachPoint+" emitPoint: "+emitPoint+" image: "+image+" imageWidth: "+imageWidth+" imageHeight: "+imageHeight+" attackImage: "+attackImage
+                +" attackImageWidth: "+attackImageWidth+" attackImageHeight: "+attackImageHeight+" attackSound: "+attackSound+" damage: "+damage;
     }
 
     public String getAttachPoint() {

@@ -1,5 +1,8 @@
 package edu.byu.cs.superasteroids.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by Jon on 10/10/2016.
  * Contains information describing a level background object
@@ -15,10 +18,10 @@ public class LevelObject {
         this.objectId = objectId;
     }
 
-    public LevelObject(LevelObject level) {
-        this.position = level.getPosition();
-        this.scale = level.getScale();
-        this.objectId = level.getObjectId();
+    public LevelObject(JSONObject level) throws JSONException {
+        this.position = level.getString("position");
+        this.scale = level.getInt("scale");
+        this.objectId = level.getInt("objectId");
     }
 
     public float getScale() {

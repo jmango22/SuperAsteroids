@@ -1,5 +1,7 @@
 package edu.byu.cs.superasteroids.model;
 
+import org.json.JSONObject;
+
 /**
  * Created by Jon on 10/10/2016.
  * The Background Image
@@ -7,19 +9,12 @@ package edu.byu.cs.superasteroids.model;
 public class BackgroundObject {
     private String image;
     private long id;
-    /**
-     * Creates the background image object
-     */
-    public BackgroundObject() {
-        this.image = "";
-    }
 
-    /**
-     * Creates the background image object
-     * @param image - string: file path
-     */
     public BackgroundObject(String image) {
         this.image = image;
+
+        System.out.println("BackgroundObject Created!");
+        System.out.println(toString());
     }
 
     public long getId() { return id; }
@@ -41,5 +36,9 @@ public class BackgroundObject {
      */
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String toString() {
+        return "image: "+image;
     }
 }

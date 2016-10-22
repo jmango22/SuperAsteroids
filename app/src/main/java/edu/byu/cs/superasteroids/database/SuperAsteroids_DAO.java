@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.view.View;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -23,6 +24,7 @@ import edu.byu.cs.superasteroids.model.PowerCore;
 
 /**
  * Created by Jon on 10/10/2016.
+ * This class follows the SINGLETON DESIGN PATTERN, has only one instance, and is accessed through its public SINGLETON Method
  * Add* methods
  * GetAll* methods
  * ClearAll method
@@ -30,12 +32,12 @@ import edu.byu.cs.superasteroids.model.PowerCore;
 public class SuperAsteroids_DAO {
     public static final SuperAsteroids_DAO SINGLETON = new SuperAsteroids_DAO();
 
-    private SQLiteDatabase db;
+    // TODO link the dbOpenhelper to the DAO, using the SINGLETON model
+    private DbOpenHelper dbOpenHelper;
 
-    public SuperAsteroids_DAO() {db = null;}
-    public SuperAsteroids_DAO(SQLiteDatabase db) {
-        this.db = db;
-    }
+    private SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
+
+    private SuperAsteroids_DAO() {}
 
     public void setDB(SQLiteDatabase db) {
         this.db = db;
@@ -71,6 +73,22 @@ public class SuperAsteroids_DAO {
         values.put("height", level.getHeight());
         values.put("music", level.getMusic());
 
+        // Add LevelObjects to their table
+        for (LevelObject levelObject : level.getLevelObjects()) {
+            boolean result = addLevelObject(levelObject);
+            if(!result) {
+                return false;
+            }
+        }
+
+        // Add LevelAsteroids to their table
+        for (LevelAsteroid levelAsteroid : level.getLevelAsteroids()) {
+            boolean result = addLevelAsteroid(levelAsteroid);
+            if(!result) {
+                return false;
+            }
+        }
+
         long id = db.insert("level", null, values);
         if(id >= 0) {
             return true;
@@ -80,7 +98,7 @@ public class SuperAsteroids_DAO {
         }
     }
 
-    public boolean addLevelObject(LevelObject levelObject) {
+    private boolean addLevelObject(LevelObject levelObject) {
         ContentValues values = new ContentValues();
         values.put("position", levelObject.getPosition());
         values.put("object_id", levelObject.getObjectId());
@@ -95,7 +113,7 @@ public class SuperAsteroids_DAO {
         }
     }
 
-    public boolean addLevelAsteroid(LevelAsteroid levelAsteroid) {
+    private boolean addLevelAsteroid(LevelAsteroid levelAsteroid) {
         ContentValues values = new ContentValues();
         values.put("number", levelAsteroid.getNumber());
         values.put("asteroid_id", levelAsteroid.getAsteroidId());
@@ -214,7 +232,7 @@ public class SuperAsteroids_DAO {
 
     /**
      * Gets Object of Type specified
-     * @param type - String type of object
+     * @param
      * @return Object
      */
     // Get methods
@@ -246,32 +264,43 @@ public class SuperAsteroids_DAO {
     }
 
     /**
-     * Resets all the objects of Tylevel_asteroidpe type
-     * @param type - Type of Object
+     * Resets all the tables in the Database to what they were before
      */
-    // Clear All
-    public void emptyObject(String type) {}
+    public void resetAll() {
+        // DROP all the tables
+        db.execSQL(DELETE_ASTEROID_TABLE_IF_EXISTS);
+        db.execSQL(DELETE_BGOBJECT_TABLE_IF_EXISTS);
+        db.execSQL(DELETE_LEVEL_TABLE_IF_EXISTS);
+        db.execSQL(DELETE_LEVEL_OBJECT_TABLE_IF_EXISTS);
+        db.execSQL(DELETE_LEVEL_ASTEROID_TABLE_IF_EXISTS);
+        db.execSQL(DELETE_MAIN_BODY_TABLE_IF_EXISTS);
+        db.execSQL(DELETE_CANNON_TABLE_IF_EXISTS);
+        db.execSQL(DELETE_EXTRA_PART_TABLE_IF_EXISTS);
+        db.execSQL(DELETE_ENGINE_TABLE_IF_EXISTS);
+        db.execSQL(DELETE_POWER_CORE_TABLE_IF_EXISTS);
+
+        // RECREATE the tables now
+        db.execSQL(DbOpenHelper.CREATE_ASTEROID_TABLE);
+        db.execSQL(DbOpenHelper.CREATE_BACKGROUND_OBJECT_TABLE);
+        db.execSQL(DbOpenHelper.CREATE_LEVEL_TABLE);
+        db.execSQL(DbOpenHelper.CREATE_LEVEL_OBJECT_TABLE);
+        db.execSQL(DbOpenHelper.CREATE_LEVEL_ASTEROID_TABLE);
+        db.execSQL(DbOpenHelper.CREATE_MAIN_BODY_TABLE);
+        db.execSQL(DbOpenHelper.CREATE_CANNON_TABLE);
+        db.execSQL(DbOpenHelper.CREATE_EXTRA_PART_TABLE);
+        db.execSQL(DbOpenHelper.CREATE_ENGINE_TABLE);
+        db.execSQL(DbOpenHelper.CREATE_POWER_CORE_TABLE);
+
+    }
 
     private static final String DELETE_ASTEROID_TABLE_IF_EXISTS = "DROP TABLE IF EXISTS asteroid;";
-
     private static final String DELETE_BGOBJECT_TABLE_IF_EXISTS = "DROP TABLE IF EXISTS bgobject;";
-
     private static final String DELETE_LEVEL_TABLE_IF_EXISTS = "DROP TABLE IF EXISTS level;";
-
     private static final String DELETE_LEVEL_OBJECT_TABLE_IF_EXISTS = "DROP TABLE IF EXISTS level_object;";
-
     private static final String DELETE_LEVEL_ASTEROID_TABLE_IF_EXISTS = "DROP TABLE IF EXISTS level_asteroid;";
-
     private static final String DELETE_MAIN_BODY_TABLE_IF_EXISTS = "DROP TABLE IF EXISTS main_body;";
-
     private static final String DELETE_CANNON_TABLE_IF_EXISTS = "DROP TABLE IF EXISTS cannon;";
-
     private static final String DELETE_EXTRA_PART_TABLE_IF_EXISTS = "DROP TABLE IF EXISTS extra_part;";
-
     private static final String DELETE_ENGINE_TABLE_IF_EXISTS = "DROP TABLE IF EXISTS engine;";
-
     private static final String DELETE_POWER_CORE_TABLE_IF_EXISTS = "DROP TABLE IF EXISTS power_core;";
-
-
-
 }
