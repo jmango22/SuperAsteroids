@@ -6,7 +6,7 @@ package edu.byu.cs.superasteroids.model;
  */
 public class BackgroundObject {
     private String image;
-
+    private long id;
     /**
      * Creates the background image object
      */
@@ -22,6 +22,11 @@ public class BackgroundObject {
         this.image = image;
     }
 
+    public long getId() { return id; }
+
+    public void setId(long id) {
+        this.id = id;
+    }
     /**
      * Get the path to the background image file
      * @return string path to background image

@@ -18,7 +18,7 @@ public class Database {
     private SQLiteDatabase database;
     private Context baseContext;
 
-    public DAO DAO;
+    public SuperAsteroids_DAO dao;
 
     /**
      * Creates the Databse
@@ -30,7 +30,7 @@ public class Database {
      * Gets the DAO
      * @return - DAO
      */
-    public DAO getDAO() {
+    public SuperAsteroids_DAO getDAO() {
         return null;
     }
 

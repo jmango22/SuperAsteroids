@@ -5,6 +5,7 @@ package edu.byu.cs.superasteroids.model;
  * Contains information describing an asteroid type
  */
 public class Asteroid {
+    private long id;
     private String name;
     private String image;
     private int imageWidth;
@@ -39,26 +40,22 @@ public class Asteroid {
         this.type = asteroid.getType();
     }
 
-    /**
-     * Get the name
-     * @return String name
-     */
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
 
-    /**
-     * Set the name
-     * @param name - String
-     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * Get the image
-     * @return String image
-     */
     public String getImage() {
         return image;
     }
