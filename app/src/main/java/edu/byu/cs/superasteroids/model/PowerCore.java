@@ -24,6 +24,10 @@ public class PowerCore {
         this.image = core.getString("image");
     }
 
+    public String toString() {
+        return "cannonBoost: "+getCannonBoost()+" engineBoost: "+getEngineBoost()+" image: "+getImage();
+    }
+
     public int getCannonBoost() {
         return cannonBoost;
     }

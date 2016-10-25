@@ -10,9 +10,9 @@ import org.json.JSONObject;
 public class LevelObject {
     private String position;
     private int objectId;
-    private float scale;
+    private double scale;
 
-    public LevelObject(String position, float scale, int objectId) {
+    public LevelObject(String position, double scale, int objectId) {
         this.position = position;
         this.scale = scale;
         this.objectId = objectId;
@@ -20,11 +20,11 @@ public class LevelObject {
 
     public LevelObject(JSONObject level) throws JSONException {
         this.position = level.getString("position");
-        this.scale = level.getInt("scale");
+        this.scale = level.getDouble("scale");
         this.objectId = level.getInt("objectId");
     }
 
-    public float getScale() {
+    public double getScale() {
         return scale;
     }
 

@@ -7,38 +7,42 @@ import org.json.JSONObject;
  * Created by Jon on 10/10/2016.
  * Contains information describing a main body part of the ship
  */
-public class MainBody {
-    private String connonAttach;
+public class MainBody extends Model {
+    private String cannonAttach;
     private String engineAttach;
     private String extraAttach;
-    private String image;
-    private int imageWidth;
-    private int imageHeight;
 
-    public MainBody(String connonAttach, String engineAttach, String extraAttach, String image, int imageWidth, int imageHeight) {
-        this.connonAttach = connonAttach;
-        this.engineAttach = engineAttach;
-        this.extraAttach = extraAttach;
-        this.image = image;
-        this.imageWidth = imageWidth;
-        this.imageHeight = imageHeight;
+
+    public MainBody(String cannonAttach, String engineAttach, String extraAttach, String image, int imageWidth, int imageHeight) {
+        setCannonAttach(cannonAttach);
+        setEngineAttach(engineAttach);
+        setExtraAttach(extraAttach);
+        setImage(image);
+        setImageWidth(imageWidth);
+        setImageHeight(imageHeight);
     }
 
     public MainBody(JSONObject body) throws JSONException {
-        this.connonAttach = body.getString("cannonAttach");
-        this.engineAttach = body.getString("engineAttach");
-        this.extraAttach = body.getString("extraAttach");
-        this.image = body.getString("image");
-        this.imageWidth = body.getInt("imageWidth");
-        this.imageHeight = body.getInt("imageHeight");
+        setCannonAttach(body.getString("cannonAttach"));
+        setEngineAttach(body.getString("engineAttach"));
+        setExtraAttach(body.getString("extraAttach"));
+        setImage(body.getString("image"));
+        setImageWidth(body.getInt("imageWidth"));
+        setImageHeight(body.getInt("imageHeight"));
     }
 
-    public String getConnonAttach() {
-        return connonAttach;
+    public String toString() {
+        return "cannonAttach: "+getCannonAttach()+" engineAttach: "+getEngineAttach()+" extraAttach: "+getExtraAttach()+" image: "+getImage()+
+                " imageWidth: "+getImageWidth()+" imageHeight: "+getImageHeight();
     }
 
-    public void setConnonAttach(String connonAttach) {
-        this.connonAttach = connonAttach;
+    // Getters and Setters
+    public String getCannonAttach() {
+        return cannonAttach;
+    }
+
+    public void setCannonAttach(String connonAttach) {
+        this.cannonAttach = connonAttach;
     }
 
     public String getEngineAttach() {
@@ -55,29 +59,5 @@ public class MainBody {
 
     public void setExtraAttach(String extraAttach) {
         this.extraAttach = extraAttach;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public int getImageWidth() {
-        return imageWidth;
-    }
-
-    public void setImageWidth(int imageWidth) {
-        this.imageWidth = imageWidth;
-    }
-
-    public int getImageHeight() {
-        return imageHeight;
-    }
-
-    public void setImageHeight(int imageHeight) {
-        this.imageHeight = imageHeight;
     }
 }

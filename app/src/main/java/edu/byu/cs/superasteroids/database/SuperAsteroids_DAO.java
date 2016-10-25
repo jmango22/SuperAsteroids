@@ -1,14 +1,12 @@
 package edu.byu.cs.superasteroids.database;
 
+
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.view.View;
 
 import java.util.HashSet;
 import java.util.Set;
-
 
 import edu.byu.cs.superasteroids.model.Asteroid;
 import edu.byu.cs.superasteroids.model.BackgroundObject;
@@ -32,10 +30,7 @@ import edu.byu.cs.superasteroids.model.PowerCore;
 public class SuperAsteroids_DAO {
     public static final SuperAsteroids_DAO SINGLETON = new SuperAsteroids_DAO();
 
-    // TODO link the dbOpenhelper to the DAO, using the SINGLETON model
-    private DbOpenHelper dbOpenHelper;
-
-    private SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
+    private SQLiteDatabase db;
 
     private SuperAsteroids_DAO() {}
 
@@ -44,7 +39,6 @@ public class SuperAsteroids_DAO {
     }
 
     // Add methods
-
 
     public boolean addAsteroid(Asteroid asteroid) {
         ContentValues values = new ContentValues();
@@ -57,9 +51,11 @@ public class SuperAsteroids_DAO {
         long id = db.insert("asteroid", null, values);
         if(id >= 0) {
             asteroid.setId(id);
+            System.out.println("Asteroid added to DB successfully!");
             return true;
         }
         else {
+            System.out.println("Asteroid failed to be added to DB successfully.");
             return false;
         }
     }
@@ -75,7 +71,7 @@ public class SuperAsteroids_DAO {
 
         // Add LevelObjects to their table
         for (LevelObject levelObject : level.getLevelObjects()) {
-            boolean result = addLevelObject(levelObject);
+            boolean result = addLevelObject(level.getNumber(), levelObject);
             if(!result) {
                 return false;
             }
@@ -83,7 +79,7 @@ public class SuperAsteroids_DAO {
 
         // Add LevelAsteroids to their table
         for (LevelAsteroid levelAsteroid : level.getLevelAsteroids()) {
-            boolean result = addLevelAsteroid(levelAsteroid);
+            boolean result = addLevelAsteroid(level.getNumber(), levelAsteroid);
             if(!result) {
                 return false;
             }
@@ -98,11 +94,12 @@ public class SuperAsteroids_DAO {
         }
     }
 
-    private boolean addLevelObject(LevelObject levelObject) {
+    private boolean addLevelObject(int level_id, LevelObject levelObject) {
         ContentValues values = new ContentValues();
         values.put("position", levelObject.getPosition());
         values.put("object_id", levelObject.getObjectId());
         values.put("scale", levelObject.getScale());
+        values.put("level_id", level_id);
 
         long id = db.insert("level_object", null, values);
         if(id >= 0) {
@@ -113,10 +110,11 @@ public class SuperAsteroids_DAO {
         }
     }
 
-    private boolean addLevelAsteroid(LevelAsteroid levelAsteroid) {
+    private boolean addLevelAsteroid(int level_id, LevelAsteroid levelAsteroid) {
         ContentValues values = new ContentValues();
         values.put("number", levelAsteroid.getNumber());
         values.put("asteroid_id", levelAsteroid.getAsteroidId());
+        values.put("level_id", level_id);
 
         long id = db.insert("level_asteroid", null, values);
         if(id >= 0) {
@@ -129,7 +127,7 @@ public class SuperAsteroids_DAO {
 
     public boolean addMainBody(MainBody mainBody) {
         ContentValues values = new ContentValues();
-        values.put("cannon_attach", mainBody.getConnonAttach());
+        values.put("cannon_attach", mainBody.getCannonAttach());
         values.put("engine_attach", mainBody.getEngineAttach());
         values.put("extra_attach", mainBody.getExtraAttach());
         values.put("image", mainBody.getImage());
@@ -154,7 +152,7 @@ public class SuperAsteroids_DAO {
         values.put("image_height", cannon.getImageHeight());
         values.put("attack_image", cannon.getAttackImage());
         values.put("attack_image_width", cannon.getAttackImageWidth());
-        values.put("attack_image_height", cannon.getImageHeight());
+        values.put("attack_image_height", cannon.getAttackImageHeight());
         values.put("attack_sound", cannon.getAttackSound());
         values.put("damage", cannon.getDamage());
 
@@ -200,7 +198,7 @@ public class SuperAsteroids_DAO {
             return false;
         }
     }
-
+    
     public boolean addPowerCore(PowerCore powerCore) {
         ContentValues values = new ContentValues();
         values.put("cannon_boost", powerCore.getCannonBoost());
@@ -220,47 +218,84 @@ public class SuperAsteroids_DAO {
         ContentValues values = new ContentValues();
         values.put("path", bgObject.getImage());
 
-        long id = db.insert("level_asteroid", null, values);
+        long id = db.insert("bgobject", null, values);
         if(id >= 0) {
             bgObject.setId(id);
+            System.out.println("BGOBject added to DB successfully!");
             return true;
         }
         else {
+            System.out.println("BGOBject failed to added DB successfully!");
             return false;
         }
     }
 
-    /**
-     * Gets Object of Type specified
-     * @param
-     * @return Object
-     */
     // Get methods
-    public Asteroid getAsteroid(int id) {
-        final String SQL = "SELECT id, name, image, image_width, image_height, type FROM asteroid WHERE id = "+id;
+
+    // TODO: Follow this pattern for all the get Methods in the DAO
+    public Asteroid getAsteroid(int AsteroidId) {
+        final String SQL = "SELECT id, name, image, image_width, image_height, type FROM asteroid WHERE id = "+AsteroidId;
+        Asteroid asteroid;
+        Cursor cursor = db.rawQuery(SQL, new String[]{});
+        try {
+            cursor.moveToFirst();
+            while(!cursor.isAfterLast()) {
+
+                cursor.moveToNext();
+            }
+        }
+        finally {
+            cursor.close();
+        }
+        return null;
+        //return asteroid;
+    }
+
+    public Level getLevel(int levelNumber) {
+        final String SQL = "SELECT number, title, hint, width, height, music FROM level WHERE number = "+levelNumber;
         return null;
     }
 
-    /**
-     * Updates an Object
-     * @param type - String type of object
-     * @param object - The object
-     * @return True: Success False: Fail
-     */
-    // Update methods
-    public boolean updateObject(String type, Object object) {
-        return false;
+    private Set<LevelObject> getLevelObjects(int levelNumber) {
+        Set<LevelObject> levelObjects = new HashSet<>();
+        final String SQL = "SELECT position, object_id, scale FROM level_object WHERE level_id = "+levelNumber;
+        return null;
     }
 
-    /**
-     * Deletes an Object
-     * @param type - String type of object
-     * @param object - The object
-     * @return True: Success False: Fail
-     */
-    // Delete methods
-    public boolean deleteObject(String type, Object object) {
-        return false;
+    private Set<LevelAsteroid> getLevelAsteroids(int levelNumber) {
+        Set<LevelAsteroid> levelAsteroids = new HashSet<>();
+        final String SQL = "SELECT number, asteroid_id FROM level_asteroid WHERE level_id = "+levelNumber;
+        return null;
+    }
+
+    public BackgroundObject getBackgroundObject(int index) {
+        final String SQL = "SELECT path FROM bgobject WHERE id = "+index;
+        return null;
+    }
+
+    public Set<MainBody> getMainBodies() {
+        final String SQL = "SELECT * FROM cannon_attach";
+        return null;
+    }
+
+    public Set<Cannon> getCannons() {
+        final String SQL = "SELECT * FROM cannon";
+        return null;
+    }
+
+    public Set<ExtraPart> getExtraParts() {
+        final String SQL = "SELECT * FROM extra_part";
+        return null;
+    }
+
+    public Set<Engine> getEngines() {
+        final String SQL = "SELECT * FROM engine";
+        return null;
+    }
+
+    public Set<PowerCore> getPowerCores() {
+        final String SQL = "SELECT * FROM power_core";
+        return null;
     }
 
     /**

@@ -44,17 +44,17 @@ public class DbOpenHelper extends SQLiteOpenHelper {
     /**
      * SQL CREATE TABLE statement for LEVEL
      */
-    public static final String CREATE_LEVEL_TABLE = "CREATE TABLE level ( number INTEGER NOT NULL, title TEXT NOT NULL, hint TEXT NOT NULL, width INTEGER NOT NULL, height INTEGER NOT NULL, music TEXT NOT NULL, level_object_id INTEGER NOT NULL, level_asteroid_id INTEGER NOT NULL );";
+    public static final String CREATE_LEVEL_TABLE = "CREATE TABLE level ( number INTEGER NOT NULL, title TEXT NOT NULL, hint TEXT NOT NULL, width INTEGER NOT NULL, height INTEGER NOT NULL, music TEXT NOT NULL );";
 
     /**
      * SQL CREATE TABLE statement for LEVEL_OBJECT
      */
-    public static final String CREATE_LEVEL_OBJECT_TABLE = "CREATE TABLE level_object ( position TEXT NOT NULL, object_id INTEGER NOT NULL, scale REAL NOT NULL );";
+    public static final String CREATE_LEVEL_OBJECT_TABLE = "CREATE TABLE level_object ( position TEXT NOT NULL, object_id INTEGER NOT NULL, scale REAL NOT NULL, level_id INTEGER NOT NULL);";
 
     /**
      * SQL CREATE TABLE statement for LEVEL_ASTEROID
      */
-    public static final String CREATE_LEVEL_ASTEROID_TABLE = "CREATE TABLE level_asteroid ( number INTEGER NOT NULL, asteroid_id INTEGER NOT NULL );";
+    public static final String CREATE_LEVEL_ASTEROID_TABLE = "CREATE TABLE level_asteroid ( number INTEGER NOT NULL, asteroid_id INTEGER NOT NULL, level_id INTEGER NOT NULL );";
 
     /**
      * SQL CREATE TABLE statement for MAIN_BODY

@@ -41,7 +41,7 @@ public class ImportActivity extends ActionBarActivity {
         }
 
         //TODO: Set the dataimporter to an instance of your GameDataImporter
-        dataImporter = new GameDataImporter();
+        dataImporter = new GameDataImporter(this);
     }
 
 

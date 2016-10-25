@@ -7,12 +7,9 @@ import org.json.JSONObject;
  * Created by Jon on 10/10/2016.
  * Contains information describing an asteroid type
  */
-public class Asteroid {
+public class Asteroid extends Model {
     private long id;
     private String name;
-    private String image;
-    private int imageWidth;
-    private int imageHeight;
     private String type;
 
     /**
@@ -24,23 +21,24 @@ public class Asteroid {
      * @param type - Type String
      */
     public Asteroid(String name, String image, int imageWidth, int imageHeight, String type) {
-        this.name = name;
-        this.image = image;
-        this.imageWidth = imageWidth;
-        this.imageHeight = imageHeight;
-        this.type = type;
+        this.setName(name);
+        this.setImage(image);
+        this.setImageWidth(imageWidth);
+        this.setImageHeight(imageHeight);
+        this.setType(type);
     }
 
     /**
      * Creates an Asteroid from another Asteroid
-     * @param asteroid - Type Asteroid
+     * @param asteroid - JSONObject
      */
     public Asteroid(JSONObject asteroid) throws JSONException {
-        this.name = asteroid.getString("name");
-        this.image = asteroid.getString("image");
-        this.imageWidth = asteroid.getInt("imageWidth");
-        this.imageHeight = asteroid.getInt("imageHeight");
-        this.type = asteroid.getString("type");
+        this.setName(asteroid.getString("name"));
+        this.setImage(asteroid.getString("image"));
+        this.setImageWidth(asteroid.getInt("imageWidth"));
+        this.setImageHeight(asteroid.getInt("imageHeight"));
+        this.setType(asteroid.getString("type"));
+
 
         System.out.println("Asteroid Create!");
         System.out.println(toString());
@@ -57,33 +55,9 @@ public class Asteroid {
     public String getName() {
         return name;
     }
-
+    
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public int getImageWidth() {
-        return imageWidth;
-    }
-
-    public void setImageWidth(int imageWidth) {
-        this.imageWidth = imageWidth;
-    }
-
-    public int getImageHeight() {
-        return imageHeight;
-    }
-
-    public void setImageHeight(int imageHeight) {
-        this.imageHeight = imageHeight;
     }
 
     public String getType() {
@@ -95,6 +69,6 @@ public class Asteroid {
     }
 
     public String toString() {
-        return "name: "+name+" image: "+image+" imageWidth: "+imageWidth+" imageHeight: "+imageHeight+" type: "+type;
+        return "name: "+name+" image: "+getImage()+" imageWidth: "+getImageWidth()+" imageHeight: "+getImageHeight()+" type: "+type;
     }
 }

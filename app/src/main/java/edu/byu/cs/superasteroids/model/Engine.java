@@ -6,35 +6,35 @@ import org.json.JSONObject;
 /**
  * Created by Jon on 10/10/2016.
  */
-public class Engine {
+public class Engine extends Model {
     private int base_speed;
     private int base_turn_rate;
     private String attach_point;
-    private String image;
-    private int imageWidth;
-    private int imageHeight;
 
     public Engine(int base_speed, int base_turn_rate, String attach_point, String image, int imageWidth, int imageHeight) {
-        this.base_speed = base_speed;
-        this.base_turn_rate = base_turn_rate;
-        this.attach_point = attach_point;
-        this.image = image;
-        this.imageWidth = imageWidth;
-        this.imageHeight = imageHeight;
+        setBase_speed(base_speed);
+        setBase_turn_rate(base_turn_rate);
+        setAttach_point(attach_point);
+        setImage(image);
+        setImageWidth(imageWidth);
+        setImageHeight(imageHeight);
     }
 
     public Engine(JSONObject engine) throws JSONException {
-        this.base_speed = engine.getInt("baseSpeed");
-        this.base_turn_rate = engine.getInt("baseTurnRate");
-        this.attach_point = engine.getString("attachPoint");
-        this.image = engine.getString("image");
-        this.imageWidth = engine.getInt("imageWidth");
-        this.imageHeight = engine.getInt("imageHeight");
+        setBase_speed(engine.getInt("baseSpeed"));
+        setBase_turn_rate(engine.getInt("baseTurnRate"));
+        setAttach_point( engine.getString("attachPoint"));
+        setImage(engine.getString("image"));
+        setImageWidth(engine.getInt("imageWidth"));
+        setImageHeight(engine.getInt("imageHeight"));
     }
 
-    public int getBase_speed() {
-        return base_speed;
+    public String toString() {
+        return "baseSpeed: "+getBase_speed()+" baseTurnRate: "+getBase_turn_rate()+" attachPoint: "+getAttach_point()+" image: "+getImage()+" imageWidth: "+getImageWidth()+
+                " imageHeight: "+getImageHeight();
     }
+    // Getters and Setters
+    public int getBase_speed() { return base_speed; }
 
     public void setBase_speed(int base_speed) {
         this.base_speed = base_speed;
@@ -54,29 +54,5 @@ public class Engine {
 
     public void setAttach_point(String attach_point) {
         this.attach_point = attach_point;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public int getImageWidth() {
-        return imageWidth;
-    }
-
-    public void setImageWidth(int imageWidth) {
-        this.imageWidth = imageWidth;
-    }
-
-    public int getImageHeight() {
-        return imageHeight;
-    }
-
-    public void setImageHeight(int imageHeight) {
-        this.imageHeight = imageHeight;
     }
 }

@@ -7,12 +7,9 @@ import org.json.JSONObject;
  * Created by Jon on 10/10/2016.
  * Contains information describing a cannon part of the ship
  */
-public class Cannon {
+public class Cannon extends Model{
     private String attachPoint;
     private String emitPoint;
-    private String image;
-    private int imageWidth;
-    private int imageHeight;
     private String attackImage;
     private int attackImageWidth;
     private int attackImageHeight;
@@ -20,39 +17,41 @@ public class Cannon {
     private int damage;
 
     public Cannon(String attachPoint, String emitPoint, String image, int imageWidth, int imageHeight, String attackImage, int attackImageWidth, int attackImageHeight, String attackSound, int damage) {
-        this.attachPoint = attachPoint;
-        this.emitPoint = emitPoint;
-        this.image = image;
-        this.imageWidth = imageWidth;
-        this.imageHeight = imageHeight;
-        this.attackImage = attackImage;
-        this.attackImageWidth = attackImageWidth;
-        this.attackImageHeight = attackImageHeight;
-        this.attackSound = attackSound;
-        this.damage = damage;
+        setAttachPoint(attachPoint);
+        setEmitPoint(emitPoint);
+        setImage(image);
+        setImageWidth(imageWidth);
+        setImageHeight(imageHeight);
+        setAttackImage(attackImage);
+        setAttackImageWidth(attackImageWidth);
+        setAttackImageHeight(attackImageHeight);
+        setAttackSound(attackSound);
+        setDamage(damage);
     }
 
-    public Cannon(JSONObject cannon) throws JSONException{
-        this.attachPoint = cannon.getString("attachPoint");
-        this.emitPoint = cannon.getString("emitPoint");
-        this.image = cannon.getString("image");
-        this.imageWidth = cannon.getInt("imageWidth");
-        this.imageHeight = cannon.getInt("imageHeight");
-        this.attackImage = cannon.getString("attackImage");
-        this.attackImageWidth = cannon.getInt("attackImageWidth");
-        this.attackImageHeight = cannon.getInt("attackImageHeight");
-        this.attackSound = cannon.getString("attackSound");
-        this.damage = cannon.getInt("damage");
+    public Cannon(JSONObject cannon) throws JSONException {
+        setAttachPoint(cannon.getString("attachPoint"));
+        setEmitPoint(cannon.getString("emitPoint"));
+        setImage(cannon.getString("image"));
+        setImageWidth(cannon.getInt("imageWidth"));
+        setImageHeight(cannon.getInt("imageHeight"));
+        setAttackImage(cannon.getString("attackImage"));
+        setAttackImageWidth(cannon.getInt("attackImageWidth"));
+        setAttackImageHeight(cannon.getInt("attackImageHeight"));
+        setAttackSound(cannon.getString("attackSound"));
+        setDamage(cannon.getInt("damage"));
 
         System.out.println("Cannon Created!");
         System.out.println(toString());
+
     }
 
     public String toString() {
-        return "attachPoint: "+attachPoint+" emitPoint: "+emitPoint+" image: "+image+" imageWidth: "+imageWidth+" imageHeight: "+imageHeight+" attackImage: "+attackImage
+        return "attachPoint: "+attachPoint+" emitPoint: "+emitPoint+" image: "+getImage()+" imageWidth: "+getImageWidth()+" imageHeight: "+getImageHeight()+" attackImage: "+attackImage
                 +" attackImageWidth: "+attackImageWidth+" attackImageHeight: "+attackImageHeight+" attackSound: "+attackSound+" damage: "+damage;
     }
 
+    // Getters and Setters
     public String getAttachPoint() {
         return attachPoint;
     }
@@ -69,30 +68,6 @@ public class Cannon {
         this.emitPoint = emitPoint;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public int getImageWidth() {
-        return imageWidth;
-    }
-
-    public void setImageWidth(int imageWidth) {
-        this.imageWidth = imageWidth;
-    }
-
-    public int getImageHeight() {
-        return imageHeight;
-    }
-
-    public void setImageHeight(int imageHeight) {
-        this.imageHeight = imageHeight;
-    }
-
     public String getAttackImage() {
         return attackImage;
     }
@@ -105,17 +80,13 @@ public class Cannon {
         return attackImageWidth;
     }
 
-    public void setAttackImageWidth(int attackImageWidth) {
-        this.attackImageWidth = attackImageWidth;
-    }
+    public void setAttackImageWidth(int attackImageWidth) { this.attackImageWidth = attackImageWidth; }
 
     public int getAttackImageHeight() {
         return attackImageHeight;
     }
 
-    public void setAttackImageHeight(int attackImageHeight) {
-        this.attackImageHeight = attackImageHeight;
-    }
+    public void setAttackImageHeight(int attackImageHeight) { this.attackImageHeight = attackImageHeight; }
 
     public String getAttackSound() {
         return attackSound;

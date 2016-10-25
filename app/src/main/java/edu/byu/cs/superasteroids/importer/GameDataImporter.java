@@ -1,14 +1,16 @@
 package edu.byu.cs.superasteroids.importer;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.nio.charset.StandardCharsets;
 
+import edu.byu.cs.superasteroids.database.DbOpenHelper;
 import edu.byu.cs.superasteroids.database.SuperAsteroids_DAO;
 import edu.byu.cs.superasteroids.model.Asteroid;
 import edu.byu.cs.superasteroids.model.BackgroundObject;
@@ -25,12 +27,18 @@ import edu.byu.cs.superasteroids.model.PowerCore;
 public class GameDataImporter implements IGameDataImporter {
     private SuperAsteroids_DAO dao;
 
-    public GameDataImporter() {
+    public GameDataImporter(Context context) {
+        DbOpenHelper dbOpenHelper = new DbOpenHelper(context);
+        SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
         dao = SuperAsteroids_DAO.SINGLETON;
+        dao.setDB(db);
     }
 
     @Override
     public boolean importData(InputStreamReader dataInputReader) {
+        // Start by clearing the Database up
+        dao.resetAll();
+
         try {
             // Need to use my DAO and stuff up here to make a way to put the data into my database
             JSONObject rootObj = new JSONObject(makeString(dataInputReader));
