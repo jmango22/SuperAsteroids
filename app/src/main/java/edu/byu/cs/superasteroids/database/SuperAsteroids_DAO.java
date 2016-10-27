@@ -3,6 +3,7 @@ package edu.byu.cs.superasteroids.database;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.HashSet;
@@ -167,7 +168,7 @@ public class SuperAsteroids_DAO {
 
     public boolean addExtraPart(ExtraPart extraPart) {
         ContentValues values = new ContentValues();
-        values.put("attach_point", extraPart.getAttach_point());
+        values.put("attach_point", extraPart.getAttachPoint());
         values.put("image", extraPart.getImage());
         values.put("image_width", extraPart.getImageWidth());
         values.put("image_height", extraPart.getImageHeight());
@@ -183,9 +184,9 @@ public class SuperAsteroids_DAO {
 
     public boolean addEngine(Engine engine) {
         ContentValues values = new ContentValues();
-        values.put("base_speed", engine.getBase_speed());
-        values.put("base_turn_rate", engine.getBase_turn_rate());
-        values.put("attach_point", engine.getAttach_point());
+        values.put("base_speed", engine.getBaseSpeed());
+        values.put("base_turn_rate", engine.getBaseTurnRate());
+        values.put("attach_point", engine.getAttachPoint());
         values.put("image", engine.getImage());
         values.put("image_width", engine.getImageWidth());
         values.put("image_height", engine.getImageHeight());
@@ -232,60 +233,181 @@ public class SuperAsteroids_DAO {
 
     // Get methods
 
-    // TODO: Follow this pattern for all the get Methods in the DAO
     public Asteroid getAsteroid(int AsteroidId) {
         final String SQL = "SELECT id, name, image, image_width, image_height, type FROM asteroid WHERE id = "+AsteroidId;
-        Asteroid asteroid;
+        Asteroid asteroid = null;
         Cursor cursor = db.rawQuery(SQL, new String[]{});
         try {
             cursor.moveToFirst();
-            while(!cursor.isAfterLast()) {
 
+            String name = cursor.getString(1);
+            String image = cursor.getString(2);
+            int imageWidth = cursor.getInt(3);
+            int imageHeight = cursor.getInt(4);
+            String type = cursor.getString(5);
+
+            asteroid = new Asteroid(name, image, imageWidth, imageHeight, type);
+        }
+        finally {
+            cursor.close();
+        }
+        return asteroid;
+    }
+
+    public Level getLevel(int levelNumber) {
+        final String SQL = "SELECT number, title, hint, width, height, music FROM level WHERE number = "+levelNumber;
+        Level level = null;
+        Cursor cursor = db.rawQuery(SQL, new String[]{});
+        Set<LevelObject> levelObjects = getLevelObjects(levelNumber);
+        Set<LevelAsteroid> levelAsteroids = getLevelAsteroids(levelNumber);
+
+        try {
+            cursor.moveToFirst();
+            int number = cursor.getInt(0);
+            String title = cursor.getString(1);
+            String hint = cursor.getString(2);
+            int width = cursor.getInt(3);
+            int height = cursor.getInt(4);
+            String music = cursor.getString(5);
+
+            level = new Level(levelAsteroids, title, hint, width, music, levelObjects, height, number);
+        }
+        finally {
+            cursor.close();
+        }
+        return level;
+    }
+
+    private Set<LevelObject> getLevelObjects(int levelNumber) {
+        Set<LevelObject> levelObjects = new HashSet<>();
+        final String SQL = "SELECT position, object_id, scale FROM level_object WHERE level_id = "+levelNumber;
+        Cursor cursor = db.rawQuery(SQL, new String[]{});
+        try {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+
+                String position = cursor.getString(0);
+                int objectId = cursor.getInt(1);
+                double scale = cursor.getDouble(2);
+
+                LevelObject levelObject = new LevelObject(position, scale, objectId);
+                levelObjects.add(levelObject);
                 cursor.moveToNext();
             }
         }
         finally {
             cursor.close();
         }
-        return null;
-        //return asteroid;
-    }
-
-    public Level getLevel(int levelNumber) {
-        final String SQL = "SELECT number, title, hint, width, height, music FROM level WHERE number = "+levelNumber;
-        return null;
-    }
-
-    private Set<LevelObject> getLevelObjects(int levelNumber) {
-        Set<LevelObject> levelObjects = new HashSet<>();
-        final String SQL = "SELECT position, object_id, scale FROM level_object WHERE level_id = "+levelNumber;
-        return null;
+        return levelObjects;
     }
 
     private Set<LevelAsteroid> getLevelAsteroids(int levelNumber) {
         Set<LevelAsteroid> levelAsteroids = new HashSet<>();
         final String SQL = "SELECT number, asteroid_id FROM level_asteroid WHERE level_id = "+levelNumber;
-        return null;
+        Cursor cursor = db.rawQuery(SQL, new String[]{});
+        try {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+
+                int number = cursor.getInt(0);
+                int asteroidId = cursor.getInt(1);
+
+                LevelAsteroid levelAsteroid = new LevelAsteroid(number, asteroidId);
+                levelAsteroids.add(levelAsteroid);
+                cursor.moveToNext();
+            }
+        }
+        finally {
+            cursor.close();
+        }
+        return levelAsteroids;
     }
 
     public BackgroundObject getBackgroundObject(int index) {
         final String SQL = "SELECT path FROM bgobject WHERE id = "+index;
-        return null;
+        BackgroundObject backgroundObject = null;
+        Cursor cursor = db.rawQuery(SQL, new String[] {});
+        try {
+            cursor.moveToFirst();
+            backgroundObject = new BackgroundObject(cursor.getString(1));
+        }
+        finally {
+            cursor.close();
+        }
+        return backgroundObject;
     }
 
     public Set<MainBody> getMainBodies() {
         final String SQL = "SELECT * FROM cannon_attach";
-        return null;
+        Set<MainBody> mainBodies = new HashSet<>();
+        Cursor cursor = db.rawQuery(SQL, new String[]{});
+        try {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                String cannonAttach = cursor.getString(0);
+                String engineAttach = cursor.getString(1);
+                String extraAttach = cursor.getString(2);
+                String image = cursor.getString(3);
+                int imageWidth = cursor.getInt(4);
+                int imageHeight = cursor.getInt(5);
+
+                MainBody mainBody = new MainBody(cannonAttach, engineAttach, extraAttach, image, imageWidth, imageHeight);
+                mainBodies.add(mainBody);
+                cursor.moveToNext();
+            }
+        }
+        finally {
+            cursor.close();
+        }
+        return mainBodies;
     }
 
     public Set<Cannon> getCannons() {
         final String SQL = "SELECT * FROM cannon";
-        return null;
+        Set<Cannon> cannons = new HashSet<>();
+        Cursor cursor = db.rawQuery(SQL, new String[]{});
+        try {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                String attachPoint = cursor.getString(0);
+                String emitPoint = cursor.getString(1);
+                String image = cursor.getString(2);
+                int imageWidth = cursor.getInt(3);
+                int imageHeight = cursor.getInt(4);
+                String attackImage = cursor.getString(5);
+                int attackImageWidth = cursor.getInt(6);
+                int attackImageHeight = cursor.getInt(7);
+                String attackSound = cursor.getString(8);
+                int damage = cursor.getInt(9);
+
+                Cannon cannon = new Cannon(attachPoint, emitPoint, image, imageWidth, imageHeight, attackImage, attackImageWidth, attackImageHeight, attackSound, damage);
+                cannons.add(cannon);
+            }
+        } finally {
+            cursor.close();
+        }
+        return cannons;
     }
 
     public Set<ExtraPart> getExtraParts() {
         final String SQL = "SELECT * FROM extra_part";
-        return null;
+        Set<ExtraPart> extraParts = new HashSet<>();
+        Cursor cursor = db.rawQuery(SQL, new String[]{});
+        try {
+            cursor.moveToFirst();
+            while(!cursor.isAfterLast()) {
+                String attachPoint = cursor.getString(0);
+                String image = cursor.getString(1);
+                int imageWidth = cursor.getInt(2);
+                int imageHeight = cursor.getInt(3);
+
+                ExtraPart extraPart = new ExtraPart(attachPoint, image, imageWidth, imageHeight);
+                extraParts.add(extraPart);
+            }
+        } finally {
+            cursor.close();
+        }
+        return extraParts;
     }
 
     public Set<Engine> getEngines() {

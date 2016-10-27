@@ -7,52 +7,52 @@ import org.json.JSONObject;
  * Created by Jon on 10/10/2016.
  */
 public class Engine extends Model {
-    private int base_speed;
-    private int base_turn_rate;
-    private String attach_point;
+    private int baseSpeed;
+    private int baseTurnRate;
+    private String attachPoint;
 
-    public Engine(int base_speed, int base_turn_rate, String attach_point, String image, int imageWidth, int imageHeight) {
-        setBase_speed(base_speed);
-        setBase_turn_rate(base_turn_rate);
-        setAttach_point(attach_point);
+    public Engine(int baseSpeed, int baseRurnRate, String attachPoint, String image, int imageWidth, int imageHeight) {
+        setBaseSpeed(baseSpeed);
+        setBaseTurnRate(baseTurnRate);
+        setAttachPoint(attachPoint);
         setImage(image);
         setImageWidth(imageWidth);
         setImageHeight(imageHeight);
     }
 
     public Engine(JSONObject engine) throws JSONException {
-        setBase_speed(engine.getInt("baseSpeed"));
-        setBase_turn_rate(engine.getInt("baseTurnRate"));
-        setAttach_point( engine.getString("attachPoint"));
+        setBaseSpeed(engine.getInt("baseSpeed"));
+        setBaseTurnRate(engine.getInt("baseTurnRate"));
+        setAttachPoint( engine.getString("attachPoint"));
         setImage(engine.getString("image"));
         setImageWidth(engine.getInt("imageWidth"));
         setImageHeight(engine.getInt("imageHeight"));
     }
 
     public String toString() {
-        return "baseSpeed: "+getBase_speed()+" baseTurnRate: "+getBase_turn_rate()+" attachPoint: "+getAttach_point()+" image: "+getImage()+" imageWidth: "+getImageWidth()+
+        return "baseSpeed: "+getBaseSpeed()+" baseTurnRate: "+getBaseTurnRate()+" attachPoint: "+getAttachPoint()+" image: "+getImage()+" imageWidth: "+getImageWidth()+
                 " imageHeight: "+getImageHeight();
     }
     // Getters and Setters
-    public int getBase_speed() { return base_speed; }
+    public int getBaseSpeed() { return baseSpeed; }
 
-    public void setBase_speed(int base_speed) {
-        this.base_speed = base_speed;
+    public void setBaseSpeed(int baseSpeed) {
+        this.baseSpeed = baseSpeed;
     }
 
-    public int getBase_turn_rate() {
-        return base_turn_rate;
+    public int getBaseTurnRate() {
+        return baseTurnRate;
     }
 
-    public void setBase_turn_rate(int base_turn_rate) {
-        this.base_turn_rate = base_turn_rate;
+    public void setBaseTurnRate(int baseTurnRate) {
+        this.baseTurnRate = baseTurnRate;
     }
 
-    public String getAttach_point() {
-        return attach_point;
+    public String getAttachPoint() {
+        return attachPoint;
     }
 
-    public void setAttach_point(String attach_point) {
-        this.attach_point = attach_point;
+    public void setAttachPoint(String attach_point) {
+        this.attachPoint = attachPoint;
     }
 }

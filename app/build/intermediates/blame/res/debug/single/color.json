@@ -1,18 +1,22 @@
 [
     {
-        "merged": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text_holo.xml",
-        "source": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\color\\abc_search_url_text_holo.xml"
+        "merged": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text_holo.xml",
+        "source": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\color\\abc_search_url_text_holo.xml"
     },
     {
-        "merged": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text_holo.xml",
-        "source": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\color\\abc_search_url_text_holo.xml"
+        "merged": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text_holo.xml",
+        "source": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\color\\abc_search_url_text_holo.xml"
     },
     {
-        "merged": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text_holo.xml",
-        "source": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\color\\abc_search_url_text_holo.xml"
+        "merged": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text_holo.xml",
+        "source": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\color\\abc_search_url_text_holo.xml"
     },
     {
-        "merged": "/users/guest/j/jmeng2/Documents/superasteroids/app/build/intermediates/res/merged/debug/color/abc_search_url_text_holo.xml",
-        "source": "/users/guest/j/jmeng2/Documents/superasteroids/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/color/abc_search_url_text_holo.xml"
+        "merged": "C:\\Users\\mengje\\Documents\\PProjects\\SuperAsteroids\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text_holo.xml",
+        "source": "C:\\Users\\mengje\\Documents\\PProjects\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\color\\abc_search_url_text_holo.xml"
+    },
+    {
+        "merged": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text_holo.xml",
+        "source": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\color\\abc_search_url_text_holo.xml"
     }
 ]
