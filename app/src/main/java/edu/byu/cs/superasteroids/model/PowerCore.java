@@ -3,6 +3,8 @@ package edu.byu.cs.superasteroids.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.byu.cs.superasteroids.content.ContentManager;
+
 /**
  * Created by Jon on 10/10/2016.
  * Contains information describing a power core part of the ship
@@ -11,6 +13,8 @@ public class PowerCore {
     private int cannonBoost;
     private int engineBoost;
     private String image;
+
+    private int imageId;
 
     public PowerCore(int cannonBoost, int engineBoost, String image) {
         this.cannonBoost = cannonBoost;
@@ -24,8 +28,34 @@ public class PowerCore {
         this.image = core.getString("image");
     }
 
+    public void loadImage() {
+        imageId = ContentManager.getInstance().loadImage(image);
+    }
+
+    public int getImageId() {
+        return imageId;
+    }
+
+    public void unloadImage() {
+        ContentManager.getInstance().unloadImage(imageId);
+        imageId = -1;
+    }
+
     public String toString() {
         return "cannonBoost: "+getCannonBoost()+" engineBoost: "+getEngineBoost()+" image: "+getImage();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(!(o instanceof PowerCore)) {
+            return false;
+        }
+        else if(!(((PowerCore) o).getImage().equals(this.image))) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
     public int getCannonBoost() {

@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import edu.byu.cs.superasteroids.R;
 import edu.byu.cs.superasteroids.base.ActionBarActivityView;
 import edu.byu.cs.superasteroids.content.ContentManager;
+import edu.byu.cs.superasteroids.database.DbOpenHelper;
+import edu.byu.cs.superasteroids.database.SuperAsteroids_DAO;
 import edu.byu.cs.superasteroids.game.GameActivity;
 import edu.byu.cs.superasteroids.importer.ImportActivity;
 import edu.byu.cs.superasteroids.ship_builder.ShipBuildingActivity;
@@ -35,7 +37,6 @@ public class MainActivity extends ActionBarActivityView implements IMainMenuView
 
 
         //TODO: Initialize your database
- 
 
         ContentManager.getInstance().setResources(getResources());
 

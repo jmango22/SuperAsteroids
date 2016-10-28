@@ -41,8 +41,8 @@ public class ShipBuildingActivity extends ActivityView implements IShipBuildingV
 
         //TODO: Set this activity's controller to an instance of your ShipBuildingController
         //TODO: Pass the ShipBuildingController's constructor a reference to its IShipBuildingView (this)
-        //IShipBuildingController controller = new ShipBuildingController(this);
-        //setController(controller);
+        IShipBuildingController controller = new ShipBuildingController(this);
+        setController(controller);
 
 
         //Configure the part selection fragments
@@ -182,7 +182,7 @@ public class ShipBuildingActivity extends ActivityView implements IShipBuildingV
 		}
 	}
 	
-	private ViewDirection getOppositeDirection(ViewDirection direction) {
+	public ViewDirection getOppositeDirection(ViewDirection direction) {
 		switch(direction) {
 		case LEFT: 		return ViewDirection.RIGHT;
 		case RIGHT: 	return ViewDirection.LEFT;

@@ -1,5 +1,29 @@
 [
     {
+        "outputFile": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\res\\merged\\debug\\values-w500dp-v13\\values-w500dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 54,
+                    "endOffset": 105
+                },
+                "from": {
+                    "file": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w500dp\\values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 281,
+                        "endColumn": 54,
+                        "endOffset": 331
+                    }
+                }
+            }
+        ]
+    },
+    {
         "outputFile": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\res\\merged\\debug\\values-w500dp-v13\\values-w500dp-v13.xml",
         "map": [
             {
@@ -24,7 +48,7 @@
         ]
     },
     {
-        "outputFile": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\res\\merged\\debug\\values-w500dp-v13\\values-w500dp-v13.xml",
+        "outputFile": "C:\\Users\\Jon\\Documents\\Android\\SuperAsteroids\\app\\build\\intermediates\\res\\merged\\debug\\values-w500dp-v13\\values-w500dp-v13.xml",
         "map": [
             {
                 "to": {
@@ -35,7 +59,7 @@
                     "endOffset": 105
                 },
                 "from": {
-                    "file": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w500dp\\values.xml",
+                    "file": "C:\\Users\\Jon\\Documents\\Android\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w500dp\\values.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -72,7 +96,7 @@
         ]
     },
     {
-        "outputFile": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\res\\merged\\debug\\values-w500dp-v13\\values-w500dp-v13.xml",
+        "outputFile": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\res\\merged\\debug\\values-w500dp-v13\\values-w500dp-v13.xml",
         "map": [
             {
                 "to": {
@@ -83,7 +107,7 @@
                     "endOffset": 105
                 },
                 "from": {
-                    "file": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w500dp\\values.xml",
+                    "file": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w500dp\\values.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,

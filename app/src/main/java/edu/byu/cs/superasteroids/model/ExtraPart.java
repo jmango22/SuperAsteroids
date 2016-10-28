@@ -3,6 +3,8 @@ package edu.byu.cs.superasteroids.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.byu.cs.superasteroids.content.ContentManager;
+
 /**
  * Created by Jon on 10/10/2016.
  */
@@ -22,6 +24,7 @@ public class ExtraPart extends Model{
         setImageWidth(extraPart.getInt("imageWidth"));
         setImageHeight(extraPart.getInt("imageHeight"));
     }
+
 
     public String toString() {
         return " attachPoint: "+getAttachPoint()+" image: "+getImage()+" imageWidth: "+getImageWidth()+" imageHeight: "+getImageHeight();

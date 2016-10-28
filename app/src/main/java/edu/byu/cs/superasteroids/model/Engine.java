@@ -3,6 +3,8 @@ package edu.byu.cs.superasteroids.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.byu.cs.superasteroids.content.ContentManager;
+
 /**
  * Created by Jon on 10/10/2016.
  */
@@ -11,7 +13,7 @@ public class Engine extends Model {
     private int baseTurnRate;
     private String attachPoint;
 
-    public Engine(int baseSpeed, int baseRurnRate, String attachPoint, String image, int imageWidth, int imageHeight) {
+    public Engine(int baseSpeed, int baseTurnRate, String attachPoint, String image, int imageWidth, int imageHeight) {
         setBaseSpeed(baseSpeed);
         setBaseTurnRate(baseTurnRate);
         setAttachPoint(attachPoint);

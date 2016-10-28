@@ -3,6 +3,11 @@ package edu.byu.cs.superasteroids.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Set;
+
+import edu.byu.cs.superasteroids.content.ContentManager;
+import edu.byu.cs.superasteroids.database.SuperAsteroids_DAO;
+
 /**
  * Created by Jon on 10/10/2016.
  * Contains information describing a main body part of the ship
@@ -11,7 +16,6 @@ public class MainBody extends Model {
     private String cannonAttach;
     private String engineAttach;
     private String extraAttach;
-
 
     public MainBody(String cannonAttach, String engineAttach, String extraAttach, String image, int imageWidth, int imageHeight) {
         setCannonAttach(cannonAttach);

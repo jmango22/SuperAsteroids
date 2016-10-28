@@ -6,7 +6,9 @@ import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import edu.byu.cs.superasteroids.model.Asteroid;
@@ -24,8 +26,8 @@ import edu.byu.cs.superasteroids.model.PowerCore;
 /**
  * Created by Jon on 10/10/2016.
  * This class follows the SINGLETON DESIGN PATTERN, has only one instance, and is accessed through its public SINGLETON Method
- * Add* methods
- * GetAll* methods
+ * Add methods
+ * GetAll methods
  * ClearAll method
  */
 public class SuperAsteroids_DAO {
@@ -329,7 +331,7 @@ public class SuperAsteroids_DAO {
         Cursor cursor = db.rawQuery(SQL, new String[] {});
         try {
             cursor.moveToFirst();
-            backgroundObject = new BackgroundObject(cursor.getString(1));
+            backgroundObject = new BackgroundObject(cursor.getString(0));
         }
         finally {
             cursor.close();
@@ -337,9 +339,9 @@ public class SuperAsteroids_DAO {
         return backgroundObject;
     }
 
-    public Set<MainBody> getMainBodies() {
+    public List<MainBody> getMainBodies() {
         final String SQL = "SELECT * FROM cannon_attach";
-        Set<MainBody> mainBodies = new HashSet<>();
+        List<MainBody> mainBodies = new ArrayList<>();
         Cursor cursor = db.rawQuery(SQL, new String[]{});
         try {
             cursor.moveToFirst();
@@ -362,9 +364,9 @@ public class SuperAsteroids_DAO {
         return mainBodies;
     }
 
-    public Set<Cannon> getCannons() {
+    public List<Cannon> getCannons() {
         final String SQL = "SELECT * FROM cannon";
-        Set<Cannon> cannons = new HashSet<>();
+        List<Cannon> cannons = new ArrayList<>();
         Cursor cursor = db.rawQuery(SQL, new String[]{});
         try {
             cursor.moveToFirst();
@@ -389,9 +391,9 @@ public class SuperAsteroids_DAO {
         return cannons;
     }
 
-    public Set<ExtraPart> getExtraParts() {
+    public List<ExtraPart> getExtraParts() {
         final String SQL = "SELECT * FROM extra_part";
-        Set<ExtraPart> extraParts = new HashSet<>();
+        List<ExtraPart> extraParts = new ArrayList<>();
         Cursor cursor = db.rawQuery(SQL, new String[]{});
         try {
             cursor.moveToFirst();
@@ -410,14 +412,47 @@ public class SuperAsteroids_DAO {
         return extraParts;
     }
 
-    public Set<Engine> getEngines() {
+    public List<Engine> getEngines() {
         final String SQL = "SELECT * FROM engine";
-        return null;
+        List<Engine> engines = new ArrayList<>();
+        Cursor cursor = db.rawQuery(SQL, new String[]{});
+        try {
+            cursor.moveToFirst();
+            while(!cursor.isAfterLast()) {
+                int baseSpeed = cursor.getInt(0);
+                int baseTurnRate = cursor.getInt(1);
+                String attachPoint = cursor.getString(2);
+                String image = cursor.getString(3);
+                int imageWidth = cursor.getInt(4);
+                int imageHeight = cursor.getInt(5);
+
+                Engine engine = new Engine(baseSpeed, baseTurnRate, attachPoint, image, imageWidth, imageHeight);
+                engines.add(engine);
+            }
+        } finally {
+            cursor.close();
+        }
+        return engines;
     }
 
-    public Set<PowerCore> getPowerCores() {
+    public List<PowerCore> getPowerCores() {
         final String SQL = "SELECT * FROM power_core";
-        return null;
+        List<PowerCore> powerCores = new ArrayList<>();
+        Cursor cursor = db.rawQuery(SQL, new String[]{});
+        try {
+            cursor.moveToFirst();
+            while(!cursor.isAfterLast()) {
+                int cannonBoost = cursor.getInt(0);
+                int engineBoost = cursor.getInt(1);
+                String image = cursor.getString(2);
+
+                PowerCore powerCore = new PowerCore(cannonBoost, engineBoost, image);
+                powerCores.add(powerCore);
+            }
+        } finally {
+            cursor.close();
+        }
+        return powerCores;
     }
 
     /**

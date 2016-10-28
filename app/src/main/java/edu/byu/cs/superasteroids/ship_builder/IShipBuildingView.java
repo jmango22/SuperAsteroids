@@ -3,13 +3,94 @@ package edu.byu.cs.superasteroids.ship_builder;
 import java.util.List;
 
 import edu.byu.cs.superasteroids.base.IView;
+import edu.byu.cs.superasteroids.model.ShipParts;
+import edu.byu.cs.superasteroids.model.StarShip;
 
 /**
  * An interface used by a ShipBuildingController to control the view.
  */
 public interface IShipBuildingView extends IView {
 	
-	enum PartSelectionView {MAIN_BODY, EXTRA_PART, CANNON, ENGINE, POWER_CORE}
+	enum PartSelectionView {
+        MAIN_BODY {
+            public PartSelectionView onSlideView(ViewDirection direction) {
+                switch (direction) {
+                    case RIGHT:
+                        return ENGINE;
+                    case LEFT:
+                        return POWER_CORE;
+                    default:
+                        return MAIN_BODY;
+                }
+            }
+
+            public void onPartSelected(int index) {
+                StarShip.SINGLETON.setMainBody(ShipParts.SINGLETON.getMainBodies().get(index));
+            }
+        }, EXTRA_PART {
+            public PartSelectionView onSlideView(ViewDirection direction) {
+                switch (direction) {
+                    case RIGHT:
+                        return POWER_CORE;
+                    case LEFT:
+                        return CANNON;
+                    default:
+                        return EXTRA_PART;
+                }
+            }
+
+            public void onPartSelected(int index) {
+                StarShip.SINGLETON.setExtraPart(ShipParts.SINGLETON.getExtraParts().get(index));
+            }
+        }, CANNON {
+            public PartSelectionView onSlideView(ViewDirection direction) {
+                switch (direction) {
+                    case RIGHT:
+                        return EXTRA_PART;
+                    case LEFT:
+                        return ENGINE;
+                    default:
+                        return CANNON;
+                }
+            }
+
+            public void onPartSelected(int index) {
+                StarShip.SINGLETON.setCannon(ShipParts.SINGLETON.getCannons().get(index));
+            }
+        }, ENGINE {
+            public PartSelectionView onSlideView(ViewDirection direction) {
+                switch (direction) {
+                    case RIGHT:
+                        return CANNON;
+                    case LEFT:
+                        return MAIN_BODY;
+                    default:
+                        return ENGINE;
+                }
+            }
+
+            public void onPartSelected(int index) {
+                StarShip.SINGLETON.setEngine(ShipParts.SINGLETON.getEngines().get(index));
+            }
+        }, POWER_CORE {
+            public PartSelectionView onSlideView(ViewDirection direction) {
+                switch (direction) {
+                    case RIGHT:
+                        return MAIN_BODY;
+                    case LEFT:
+                        return EXTRA_PART;
+                    default:
+                        return POWER_CORE;
+                }
+            }
+
+            public void onPartSelected(int index) {
+                StarShip.SINGLETON.setPowerCore(ShipParts.SINGLETON.getPowerCores().get(index));
+            }
+        };
+        public PartSelectionView onSlideView(ViewDirection direction){ return null;}
+        public void onPartSelected(int index) {}
+    }
 	
 	enum ViewDirection {LEFT, RIGHT, UP, DOWN}
 
