@@ -31,27 +31,27 @@ public class ShipBuildingController implements IShipBuildingController {
 
     @Override
     public void loadContent(ContentManager content) {
-        ShipParts.SINGLETON.loadAllShipPartImages();
+        ShipParts.loadAllShipPartImages();
 
-        shipBuildingActivity.setPartViewImageList(PartSelectionView.MAIN_BODY, ShipParts.SINGLETON.getMainBodyImageIds());
-        shipBuildingActivity.setPartViewImageList(PartSelectionView.CANNON, ShipParts.SINGLETON.getCannonImageIds());
-        shipBuildingActivity.setPartViewImageList(PartSelectionView.ENGINE, ShipParts.SINGLETON.getEngineImageIds());
-        shipBuildingActivity.setPartViewImageList(PartSelectionView.EXTRA_PART, ShipParts.SINGLETON.getExtraPartImageIds());
-        shipBuildingActivity.setPartViewImageList(PartSelectionView.POWER_CORE, ShipParts.SINGLETON.getPowerCoreImageIds());
+        shipBuildingActivity.setPartViewImageList(PartSelectionView.MAIN_BODY, ShipParts.getMainBodyImageIds());
+        shipBuildingActivity.setPartViewImageList(PartSelectionView.CANNON, ShipParts.getCannonImageIds());
+        shipBuildingActivity.setPartViewImageList(PartSelectionView.ENGINE, ShipParts.getEngineImageIds());
+        shipBuildingActivity.setPartViewImageList(PartSelectionView.EXTRA_PART, ShipParts.getExtraPartImageIds());
+        shipBuildingActivity.setPartViewImageList(PartSelectionView.POWER_CORE, ShipParts.getPowerCoreImageIds());
     }
 
     @Override
     public void unloadContent(ContentManager content) {
-        ShipParts.SINGLETON.unloadUnusedMainBodies();
-        ShipParts.SINGLETON.unloadUnusedCannons();
-        ShipParts.SINGLETON.unloadUnusedEngines();
-        ShipParts.SINGLETON.unloadUnusedExtraParts();
-        ShipParts.SINGLETON.unloadUnusedPowerCores();
+        ShipParts.unloadUnusedMainBodies();
+        ShipParts.unloadUnusedCannons();
+        ShipParts.unloadUnusedEngines();
+        ShipParts.unloadUnusedExtraParts();
+        ShipParts.unloadUnusedPowerCores();
     }
 
     @Override
     public void draw() {
-
+        StarShip.SINGLETON.draw(50f, 50f, 0f);
     }
 
     @Override

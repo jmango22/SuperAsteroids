@@ -25,7 +25,7 @@ public interface IShipBuildingView extends IView {
             }
 
             public void onPartSelected(int index) {
-                StarShip.SINGLETON.setMainBody(ShipParts.SINGLETON.getMainBodies().get(index));
+                StarShip.SINGLETON.setMainBody(ShipParts.getMainBodies().get(index));
             }
         }, EXTRA_PART {
             public PartSelectionView onSlideView(ViewDirection direction) {
@@ -40,7 +40,7 @@ public interface IShipBuildingView extends IView {
             }
 
             public void onPartSelected(int index) {
-                StarShip.SINGLETON.setExtraPart(ShipParts.SINGLETON.getExtraParts().get(index));
+                StarShip.SINGLETON.setExtraPart(ShipParts.getExtraParts().get(index));
             }
         }, CANNON {
             public PartSelectionView onSlideView(ViewDirection direction) {
@@ -55,7 +55,7 @@ public interface IShipBuildingView extends IView {
             }
 
             public void onPartSelected(int index) {
-                StarShip.SINGLETON.setCannon(ShipParts.SINGLETON.getCannons().get(index));
+                StarShip.SINGLETON.setCannon(ShipParts.getCannons().get(index));
             }
         }, ENGINE {
             public PartSelectionView onSlideView(ViewDirection direction) {
@@ -70,7 +70,7 @@ public interface IShipBuildingView extends IView {
             }
 
             public void onPartSelected(int index) {
-                StarShip.SINGLETON.setEngine(ShipParts.SINGLETON.getEngines().get(index));
+                StarShip.SINGLETON.setEngine(ShipParts.getEngines().get(index));
             }
         }, POWER_CORE {
             public PartSelectionView onSlideView(ViewDirection direction) {
@@ -85,7 +85,7 @@ public interface IShipBuildingView extends IView {
             }
 
             public void onPartSelected(int index) {
-                StarShip.SINGLETON.setPowerCore(ShipParts.SINGLETON.getPowerCores().get(index));
+                StarShip.SINGLETON.setPowerCore(ShipParts.getPowerCores().get(index));
             }
         };
         public PartSelectionView onSlideView(ViewDirection direction){ return null;}

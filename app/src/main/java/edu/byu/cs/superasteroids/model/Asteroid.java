@@ -69,6 +69,6 @@ public class Asteroid extends Model {
     }
 
     public String toString() {
-        return "name: "+name+" image: "+getImage()+" imageWidth: "+getImageWidth()+" imageHeight: "+getImageHeight()+" type: "+type;
+        return "name: "+name+" image: "+getImage()+" type: "+type;
     }
 }

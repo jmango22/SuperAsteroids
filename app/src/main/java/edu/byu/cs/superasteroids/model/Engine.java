@@ -11,7 +11,6 @@ import edu.byu.cs.superasteroids.content.ContentManager;
 public class Engine extends Model {
     private int baseSpeed;
     private int baseTurnRate;
-    private String attachPoint;
 
     public Engine(int baseSpeed, int baseTurnRate, String attachPoint, String image, int imageWidth, int imageHeight) {
         setBaseSpeed(baseSpeed);
@@ -31,10 +30,13 @@ public class Engine extends Model {
         setImageHeight(engine.getInt("imageHeight"));
     }
 
+    /*
     public String toString() {
         return "baseSpeed: "+getBaseSpeed()+" baseTurnRate: "+getBaseTurnRate()+" attachPoint: "+getAttachPoint()+" image: "+getImage()+" imageWidth: "+getImageWidth()+
                 " imageHeight: "+getImageHeight();
     }
+    */
+
     // Getters and Setters
     public int getBaseSpeed() { return baseSpeed; }
 
@@ -48,13 +50,5 @@ public class Engine extends Model {
 
     public void setBaseTurnRate(int baseTurnRate) {
         this.baseTurnRate = baseTurnRate;
-    }
-
-    public String getAttachPoint() {
-        return attachPoint;
-    }
-
-    public void setAttachPoint(String attach_point) {
-        this.attachPoint = attachPoint;
     }
 }

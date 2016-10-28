@@ -37,6 +37,21 @@ public class StarShip {
         }
     }
 
+    public void draw(Float posX, Float posY, Float rotationDegrees) {
+        if(mainBody != null) {
+            mainBody.draw(posX, posY, rotationDegrees);
+            if(cannon != null) {
+                cannon.draw(mainBody, mainBody.getCannonAttach());
+            }
+            if(extraPart != null) {
+                extraPart.draw(mainBody, mainBody.getExtraAttach());
+            }
+            if(engine != null) {
+                engine.draw(mainBody, mainBody.getEngineAttach());
+            }
+        }
+    }
+
     public void setMainBody(MainBody mainBody) {
         this.mainBody = mainBody;
     }

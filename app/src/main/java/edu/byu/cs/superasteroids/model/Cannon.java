@@ -1,14 +1,18 @@
 package edu.byu.cs.superasteroids.model;
 
+import android.graphics.PointF;
+import android.renderscript.Float2;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import edu.byu.cs.superasteroids.core.GraphicsUtils;
 
 /**
  * Created by Jon on 10/10/2016.
  * Contains information describing a cannon part of the ship
  */
 public class Cannon extends Model{
-    private String attachPoint;
     private String emitPoint;
     private String attackImage;
     private int attackImageWidth;
@@ -46,19 +50,15 @@ public class Cannon extends Model{
 
     }
 
+    /*
     public String toString() {
         return "attachPoint: "+attachPoint+" emitPoint: "+emitPoint+" image: "+getImage()+" imageWidth: "+getImageWidth()+" imageHeight: "+getImageHeight()+" attackImage: "+attackImage
                 +" attackImageWidth: "+attackImageWidth+" attackImageHeight: "+attackImageHeight+" attackSound: "+attackSound+" damage: "+damage;
     }
+    */
 
     // Getters and Setters
-    public String getAttachPoint() {
-        return attachPoint;
-    }
 
-    public void setAttachPoint(String attachPoint) {
-        this.attachPoint = attachPoint;
-    }
 
     public String getEmitPoint() {
         return emitPoint;
@@ -80,13 +80,17 @@ public class Cannon extends Model{
         return attackImageWidth;
     }
 
-    public void setAttackImageWidth(int attackImageWidth) { this.attackImageWidth = attackImageWidth; }
+    public void setAttackImageWidth(int attackImageWidth) {
+        this.attackImageWidth = attackImageWidth;
+    }
 
     public int getAttackImageHeight() {
         return attackImageHeight;
     }
 
-    public void setAttackImageHeight(int attackImageHeight) { this.attackImageHeight = attackImageHeight; }
+    public void setAttackImageHeight(int attackImageHeight) {
+        this.attackImageHeight = attackImageHeight;
+    }
 
     public String getAttackSound() {
         return attackSound;

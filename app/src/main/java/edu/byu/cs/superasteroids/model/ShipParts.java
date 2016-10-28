@@ -10,23 +10,13 @@ import edu.byu.cs.superasteroids.database.SuperAsteroids_DAO;
  * Created by Jon on 10/27/2016.
  */
 public class ShipParts {
-    public static final ShipParts SINGLETON = new ShipParts();
+    private static List<MainBody> mainBodies = SuperAsteroids_DAO.SINGLETON.getMainBodies();
+    private static List<ExtraPart> extraParts = SuperAsteroids_DAO.SINGLETON.getExtraParts();
+    private static List<Cannon> cannons = SuperAsteroids_DAO.SINGLETON.getCannons();
+    private static List<Engine> engines = SuperAsteroids_DAO.SINGLETON.getEngines();
+    private static List<PowerCore> powerCores = SuperAsteroids_DAO.SINGLETON.getPowerCores();
 
-    private List<MainBody> mainBodies;
-    private List<ExtraPart> extraParts;
-    private List<Cannon> cannons;
-    private List<Engine> engines;
-    private List<PowerCore> powerCores;
-
-    private ShipParts() {
-        mainBodies = SuperAsteroids_DAO.SINGLETON.getMainBodies();
-        extraParts = SuperAsteroids_DAO.SINGLETON.getExtraParts();
-        cannons = SuperAsteroids_DAO.SINGLETON.getCannons();
-        engines = SuperAsteroids_DAO.SINGLETON.getEngines();
-        powerCores = SuperAsteroids_DAO.SINGLETON.getPowerCores();
-    }
-
-    public void loadAllShipPartImages() {
+    public static void loadAllShipPartImages() {
         for(MainBody mainBody : mainBodies) {
             mainBody.loadImage();
         }
@@ -48,7 +38,7 @@ public class ShipParts {
         }
     }
 
-    public void unloadUnusedMainBodies() {
+    public static void unloadUnusedMainBodies() {
         for(MainBody mainBody : mainBodies) {
             if(!(mainBody.equals(StarShip.SINGLETON.getMainBody()))) {
                 mainBody.unloadImage();
@@ -56,7 +46,7 @@ public class ShipParts {
         }
     }
 
-    public void unloadUnusedExtraParts() {
+    public static void unloadUnusedExtraParts() {
         for(ExtraPart extraPart : extraParts) {
             if(!(extraPart.equals(StarShip.SINGLETON.getExtraPart()))) {
                 extraPart.unloadImage();
@@ -64,7 +54,7 @@ public class ShipParts {
         }
     }
 
-    public void unloadUnusedCannons() {
+    public static void unloadUnusedCannons() {
         for(Cannon cannon : cannons) {
             if(!(cannon.equals(StarShip.SINGLETON.getCannon()))) {
                 cannon.unloadImage();
@@ -72,7 +62,7 @@ public class ShipParts {
         }
     }
 
-    public void unloadUnusedEngines() {
+    public static void unloadUnusedEngines() {
         for(Engine engine : engines) {
             if(!(engine.equals(StarShip.SINGLETON.getEngine()))) {
                 engine.unloadImage();
@@ -80,7 +70,7 @@ public class ShipParts {
         }
     }
 
-    public void unloadUnusedPowerCores() {
+    public static void unloadUnusedPowerCores() {
         for(PowerCore powerCore : powerCores) {
             if(!(powerCore.equals(StarShip.SINGLETON.getEngine()))) {
                 powerCore.unloadImage();
@@ -88,27 +78,27 @@ public class ShipParts {
         }
     }
 
-    public List<MainBody> getMainBodies () {
+    public static List<MainBody> getMainBodies () {
         return mainBodies;
     }
 
-    public List<ExtraPart> getExtraParts () {
+    public static List<ExtraPart> getExtraParts () {
         return extraParts;
     }
 
-    public List<Cannon> getCannons() {
+    public static List<Cannon> getCannons() {
         return cannons;
     }
 
-    public List<Engine> getEngines() {
+    public static List<Engine> getEngines() {
         return engines;
     }
 
-    public List<PowerCore> getPowerCores() {
+    public static List<PowerCore> getPowerCores() {
         return powerCores;
     }
 
-    public List<Integer> getMainBodyImageIds () {
+    public static List<Integer> getMainBodyImageIds () {
         List<Integer> mainBodyImageIds = new ArrayList<>();
         for(MainBody mainBody : mainBodies) {
             mainBodyImageIds.add(mainBody.getImageId());
@@ -116,7 +106,7 @@ public class ShipParts {
         return mainBodyImageIds;
     }
 
-    public List<Integer> getExtraPartImageIds () {
+    public static List<Integer> getExtraPartImageIds () {
         List<Integer> extraPartImageIds = new ArrayList<>();
         for(ExtraPart extraPart : extraParts) {
             extraPartImageIds.add(extraPart.getImageId());
@@ -124,7 +114,7 @@ public class ShipParts {
         return extraPartImageIds;
     }
 
-    public List<Integer> getCannonImageIds () {
+    public static List<Integer> getCannonImageIds () {
         List<Integer> cannonImageIds = new ArrayList<>();
         for(Cannon cannon : cannons) {
             cannonImageIds.add(cannon.getImageId());
@@ -132,7 +122,7 @@ public class ShipParts {
         return cannonImageIds;
     }
 
-    public List<Integer> getEngineImageIds () {
+    public static List<Integer> getEngineImageIds () {
         List<Integer> engineImageIds = new ArrayList<>();
         for(Engine engine : engines) {
             engineImageIds.add(engine.getImageId());
@@ -140,7 +130,7 @@ public class ShipParts {
         return engineImageIds;
     }
 
-    public List<Integer> getPowerCoreImageIds () {
+    public static List<Integer> getPowerCoreImageIds () {
         List<Integer> powerCoreImageIds = new ArrayList<>();
         for(PowerCore powerCore : powerCores) {
             powerCoreImageIds.add(powerCore.getImageId());

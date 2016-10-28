@@ -1,5 +1,7 @@
 package edu.byu.cs.superasteroids.model;
 
+import android.graphics.PointF;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -35,30 +37,49 @@ public class MainBody extends Model {
         setImageHeight(body.getInt("imageHeight"));
     }
 
+    public void draw(float posX, float posY, float rotationDegrees) {
+        this.setPosX(posX);
+        this.setPosY(posY);
+        this.setRotationDegrees(rotationDegrees);
+
+        this.draw();
+    }
+
+    /*
     public String toString() {
         return "cannonAttach: "+getCannonAttach()+" engineAttach: "+getEngineAttach()+" extraAttach: "+getExtraAttach()+" image: "+getImage()+
-                " imageWidth: "+getImageWidth()+" imageHeight: "+getImageHeight();
+                " imageWidth: "+ getCenter().x+" imageHeight: "+getCenter().y;
     }
+    */
 
     // Getters and Setters
-    public String getCannonAttach() {
-        return cannonAttach;
+    public PointF getCannonAttach() {
+        String[] cannon = this.cannonAttach.split(",");
+        Float cannonX = Float.parseFloat(cannon[0]);
+        Float cannonY = Float.parseFloat(cannon[1]);
+        return new PointF(cannonX, cannonY);
     }
 
-    public void setCannonAttach(String connonAttach) {
-        this.cannonAttach = connonAttach;
+    public void setCannonAttach(String cannonAttach) {
+        this.cannonAttach = cannonAttach;
     }
 
-    public String getEngineAttach() {
-        return engineAttach;
+    public PointF getEngineAttach() {
+        String[] engine = this.engineAttach.split(",");
+        Float engineX = Float.parseFloat(engine[0]);
+        Float engineY = Float.parseFloat(engine[1]);
+        return new PointF(engineX, engineY);
     }
 
     public void setEngineAttach(String engineAttach) {
         this.engineAttach = engineAttach;
     }
 
-    public String getExtraAttach() {
-        return extraAttach;
+    public PointF getExtraAttach() {
+        String[] extraPart = this.extraAttach.split(",");
+        Float extraPartX = Float.parseFloat(extraPart[0]);
+        Float extraPartY = Float.parseFloat(extraPart[1]);
+        return new PointF(extraPartX, extraPartY);
     }
 
     public void setExtraAttach(String extraAttach) {
