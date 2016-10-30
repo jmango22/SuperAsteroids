@@ -13,8 +13,8 @@ public class BackgroundObject {
     public BackgroundObject(String image) {
         this.image = image;
 
-        System.out.println("BackgroundObject Created!");
-        System.out.println(toString());
+        //System.out.println("BackgroundObject Created!");
+        //System.out.println(toString());
     }
 
     public long getId() { return id; }

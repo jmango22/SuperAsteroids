@@ -27,11 +27,8 @@ import edu.byu.cs.superasteroids.model.PowerCore;
 public class GameDataImporter implements IGameDataImporter {
     private SuperAsteroids_DAO dao;
 
-    public GameDataImporter(Context context) {
-        DbOpenHelper dbOpenHelper = new DbOpenHelper(context);
-        SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
-        dao = SuperAsteroids_DAO.SINGLETON;
-        dao.setDB(db);
+    public GameDataImporter() {
+        dao = SuperAsteroids_DAO.getInstance();
     }
 
     @Override

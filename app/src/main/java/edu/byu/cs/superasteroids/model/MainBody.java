@@ -37,27 +37,26 @@ public class MainBody extends Model {
         setImageHeight(body.getInt("imageHeight"));
     }
 
-    public void draw(float posX, float posY, float rotationDegrees) {
+    public void draw(float posX, float posY, float scaleX, float scaleY, float rotationDegrees) {
         this.setPosX(posX);
         this.setPosY(posY);
         this.setRotationDegrees(rotationDegrees);
+        this.setScaleX(scaleX);
+        this.setScaleY(scaleY);
 
         this.draw();
     }
 
-    /*
-    public String toString() {
-        return "cannonAttach: "+getCannonAttach()+" engineAttach: "+getEngineAttach()+" extraAttach: "+getExtraAttach()+" image: "+getImage()+
-                " imageWidth: "+ getCenter().x+" imageHeight: "+getCenter().y;
-    }
-    */
-
     // Getters and Setters
     public PointF getCannonAttach() {
         String[] cannon = this.cannonAttach.split(",");
-        Float cannonX = Float.parseFloat(cannon[0]);
-        Float cannonY = Float.parseFloat(cannon[1]);
+        Float cannonX = (Float.parseFloat(cannon[0]))*getScaleX();
+        Float cannonY = (Float.parseFloat(cannon[1]))*getScaleY();
         return new PointF(cannonX, cannonY);
+    }
+
+    public String getCannonAttachString() {
+        return cannonAttach;
     }
 
     public void setCannonAttach(String cannonAttach) {
@@ -66,9 +65,13 @@ public class MainBody extends Model {
 
     public PointF getEngineAttach() {
         String[] engine = this.engineAttach.split(",");
-        Float engineX = Float.parseFloat(engine[0]);
-        Float engineY = Float.parseFloat(engine[1]);
+        Float engineX = (Float.parseFloat(engine[0]))*getScaleX();
+        Float engineY = (Float.parseFloat(engine[1]))*getScaleY();
         return new PointF(engineX, engineY);
+    }
+
+    public String getEngineAttachString() {
+        return engineAttach;
     }
 
     public void setEngineAttach(String engineAttach) {
@@ -77,9 +80,13 @@ public class MainBody extends Model {
 
     public PointF getExtraAttach() {
         String[] extraPart = this.extraAttach.split(",");
-        Float extraPartX = Float.parseFloat(extraPart[0]);
-        Float extraPartY = Float.parseFloat(extraPart[1]);
+        Float extraPartX = (Float.parseFloat(extraPart[0]))*getScaleX();
+        Float extraPartY = (Float.parseFloat(extraPart[1]))*getScaleY();
         return new PointF(extraPartX, extraPartY);
+    }
+
+    public String getExtraAttachString() {
+        return extraAttach;
     }
 
     public void setExtraAttach(String extraAttach) {

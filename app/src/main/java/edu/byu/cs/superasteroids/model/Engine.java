@@ -30,13 +30,6 @@ public class Engine extends Model {
         setImageHeight(engine.getInt("imageHeight"));
     }
 
-    /*
-    public String toString() {
-        return "baseSpeed: "+getBaseSpeed()+" baseTurnRate: "+getBaseTurnRate()+" attachPoint: "+getAttachPoint()+" image: "+getImage()+" imageWidth: "+getImageWidth()+
-                " imageHeight: "+getImageHeight();
-    }
-    */
-
     // Getters and Setters
     public int getBaseSpeed() { return baseSpeed; }
 

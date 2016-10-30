@@ -27,9 +27,4 @@ public class ExtraPart extends Model{
         setImageHeight(extraPart.getInt("imageHeight"));
     }
 
-    /*
-    public String toString() {
-        return " attachPoint: "+getAttachPoint()+" image: "+getImage()+" imageWidth: "+getImageWidth()+" imageHeight: "+getImageHeight();
-    }
-    */
 }

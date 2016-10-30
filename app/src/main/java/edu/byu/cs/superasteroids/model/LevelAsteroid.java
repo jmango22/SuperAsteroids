@@ -14,6 +14,8 @@ public class LevelAsteroid {
     public LevelAsteroid(int number, int asteroidId) {
         this.number = number;
         this.asteroidId = asteroidId;
+
+        System.out.print("LevelAsteroid Created!\t");
     }
 
     public LevelAsteroid(JSONObject asteroid) throws JSONException {

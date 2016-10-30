@@ -31,11 +31,19 @@ import edu.byu.cs.superasteroids.model.PowerCore;
  * ClearAll method
  */
 public class SuperAsteroids_DAO {
-    public static final SuperAsteroids_DAO SINGLETON = new SuperAsteroids_DAO();
-
     private SQLiteDatabase db;
 
+    //Singleton instance
+    private static volatile SuperAsteroids_DAO instance;
+
     private SuperAsteroids_DAO() {}
+
+    public static SuperAsteroids_DAO getInstance() {
+        if(instance == null) {
+            instance = new SuperAsteroids_DAO();
+        }
+        return instance;
+    }
 
     public void setDB(SQLiteDatabase db) {
         this.db = db;
@@ -54,11 +62,11 @@ public class SuperAsteroids_DAO {
         long id = db.insert("asteroid", null, values);
         if(id >= 0) {
             asteroid.setId(id);
-            System.out.println("Asteroid added to DB successfully!");
+            //System.out.println("Asteroid added to DB successfully!");
             return true;
         }
         else {
-            System.out.println("Asteroid failed to be added to DB successfully.");
+            //System.out.println("Asteroid failed to be added to DB successfully.");
             return false;
         }
     }
@@ -130,9 +138,9 @@ public class SuperAsteroids_DAO {
 
     public boolean addMainBody(MainBody mainBody) {
         ContentValues values = new ContentValues();
-        values.put("cannon_attach", mainBody.getCannonAttach());
-        values.put("engine_attach", mainBody.getEngineAttach());
-        values.put("extra_attach", mainBody.getExtraAttach());
+        values.put("cannon_attach", mainBody.getCannonAttachString());
+        values.put("engine_attach", mainBody.getEngineAttachString());
+        values.put("extra_attach", mainBody.getExtraAttachString());
         values.put("image", mainBody.getImage());
         values.put("image_width", mainBody.getImageWidth());
         values.put("image_height", mainBody.getImageHeight());
@@ -148,7 +156,7 @@ public class SuperAsteroids_DAO {
 
     public boolean addCannon(Cannon cannon) {
         ContentValues values = new ContentValues();
-        values.put("attach_point", cannon.getAttachPoint());
+        values.put("attach_point", cannon.getAttachPointString());
         values.put("emit_point", cannon.getEmitPoint());
         values.put("image", cannon.getImage());
         values.put("image_width", cannon.getImageWidth());
@@ -170,7 +178,7 @@ public class SuperAsteroids_DAO {
 
     public boolean addExtraPart(ExtraPart extraPart) {
         ContentValues values = new ContentValues();
-        values.put("attach_point", extraPart.getAttachPoint());
+        values.put("attach_point", extraPart.getAttachPointString());
         values.put("image", extraPart.getImage());
         values.put("image_width", extraPart.getImageWidth());
         values.put("image_height", extraPart.getImageHeight());
@@ -188,7 +196,7 @@ public class SuperAsteroids_DAO {
         ContentValues values = new ContentValues();
         values.put("base_speed", engine.getBaseSpeed());
         values.put("base_turn_rate", engine.getBaseTurnRate());
-        values.put("attach_point", engine.getAttachPoint());
+        values.put("attach_point", engine.getAttachPointString());
         values.put("image", engine.getImage());
         values.put("image_width", engine.getImageWidth());
         values.put("image_height", engine.getImageHeight());
@@ -224,11 +232,9 @@ public class SuperAsteroids_DAO {
         long id = db.insert("bgobject", null, values);
         if(id >= 0) {
             bgObject.setId(id);
-            System.out.println("BGOBject added to DB successfully!");
             return true;
         }
         else {
-            System.out.println("BGOBject failed to added DB successfully!");
             return false;
         }
     }
@@ -340,7 +346,7 @@ public class SuperAsteroids_DAO {
     }
 
     public List<MainBody> getMainBodies() {
-        final String SQL = "SELECT * FROM cannon_attach";
+        final String SQL = "SELECT * FROM main_body";
         List<MainBody> mainBodies = new ArrayList<>();
         Cursor cursor = db.rawQuery(SQL, new String[]{});
         try {
@@ -384,6 +390,8 @@ public class SuperAsteroids_DAO {
 
                 Cannon cannon = new Cannon(attachPoint, emitPoint, image, imageWidth, imageHeight, attackImage, attackImageWidth, attackImageHeight, attackSound, damage);
                 cannons.add(cannon);
+
+                cursor.moveToNext();
             }
         } finally {
             cursor.close();
@@ -405,6 +413,8 @@ public class SuperAsteroids_DAO {
 
                 ExtraPart extraPart = new ExtraPart(attachPoint, image, imageWidth, imageHeight);
                 extraParts.add(extraPart);
+
+                cursor.moveToNext();
             }
         } finally {
             cursor.close();
@@ -428,6 +438,8 @@ public class SuperAsteroids_DAO {
 
                 Engine engine = new Engine(baseSpeed, baseTurnRate, attachPoint, image, imageWidth, imageHeight);
                 engines.add(engine);
+
+                cursor.moveToNext();
             }
         } finally {
             cursor.close();
@@ -448,6 +460,8 @@ public class SuperAsteroids_DAO {
 
                 PowerCore powerCore = new PowerCore(cannonBoost, engineBoost, image);
                 powerCores.add(powerCore);
+
+                cursor.moveToNext();
             }
         } finally {
             cursor.close();

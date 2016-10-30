@@ -1,6 +1,7 @@
 package edu.byu.cs.superasteroids.main_menu;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -32,11 +33,14 @@ public class MainActivity extends ActionBarActivityView implements IMainMenuView
 
         //TODO: Set this activity's controller to an instance of your MainMenuController
         //TODO: Pass the MainMenuController's constructor a reference to its IMainMenuView (this)
-        //IMainMenuController controller = new MainMenuController(this);
-        //setController(controller);
+        IMainMenuController controller = new MainMenuController(this);
+        setController(controller);
 
 
         //TODO: Initialize your database
+        DbOpenHelper dbOpenHelper = new DbOpenHelper(this);
+        SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
+        SuperAsteroids_DAO.getInstance().setDB(db);
 
         ContentManager.getInstance().setResources(getResources());
 

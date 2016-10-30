@@ -40,7 +40,7 @@ public class ImportActivity extends ActionBarActivity {
                     .commit();
         }
 
-        dataImporter = new GameDataImporter(this);
+        dataImporter = new GameDataImporter();
     }
 
 

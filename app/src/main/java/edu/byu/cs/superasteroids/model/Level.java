@@ -30,6 +30,8 @@ public class Level {
         this.levelObjects = levelObjects;
         this.height = height;
         this.number = number;
+
+        System.out.print("Level Created!\t");
     }
 
     public Level(JSONObject level) throws JSONException{

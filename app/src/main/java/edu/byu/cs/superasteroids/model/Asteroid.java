@@ -26,6 +26,9 @@ public class Asteroid extends Model {
         this.setImageWidth(imageWidth);
         this.setImageHeight(imageHeight);
         this.setType(type);
+
+        System.out.println("Asteroid Created!");
+        System.out.println(toString());
     }
 
     /**
@@ -38,10 +41,6 @@ public class Asteroid extends Model {
         this.setImageWidth(asteroid.getInt("imageWidth"));
         this.setImageHeight(asteroid.getInt("imageHeight"));
         this.setType(asteroid.getString("type"));
-
-
-        System.out.println("Asteroid Create!");
-        System.out.println(toString());
     }
 
     public long getId() {

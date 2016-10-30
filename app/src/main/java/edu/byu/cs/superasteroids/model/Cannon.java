@@ -44,18 +44,7 @@ public class Cannon extends Model{
         setAttackImageHeight(cannon.getInt("attackImageHeight"));
         setAttackSound(cannon.getString("attackSound"));
         setDamage(cannon.getInt("damage"));
-
-        System.out.println("Cannon Created!");
-        System.out.println(toString());
-
     }
-
-    /*
-    public String toString() {
-        return "attachPoint: "+attachPoint+" emitPoint: "+emitPoint+" image: "+getImage()+" imageWidth: "+getImageWidth()+" imageHeight: "+getImageHeight()+" attackImage: "+attackImage
-                +" attackImageWidth: "+attackImageWidth+" attackImageHeight: "+attackImageHeight+" attackSound: "+attackSound+" damage: "+damage;
-    }
-    */
 
     // Getters and Setters
 

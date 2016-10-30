@@ -16,6 +16,8 @@ public class LevelObject {
         this.position = position;
         this.scale = scale;
         this.objectId = objectId;
+
+        System.out.print("LevelObject Created!\t");
     }
 
     public LevelObject(JSONObject level) throws JSONException {

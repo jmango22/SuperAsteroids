@@ -16,76 +16,75 @@ public interface IShipBuildingView extends IView {
             public PartSelectionView onSlideView(ViewDirection direction) {
                 switch (direction) {
                     case RIGHT:
-                        return ENGINE;
-                    case LEFT:
                         return POWER_CORE;
+                    case LEFT:
+                        return ENGINE;
                     default:
                         return MAIN_BODY;
                 }
             }
 
             public void onPartSelected(int index) {
-                StarShip.SINGLETON.setMainBody(ShipParts.getMainBodies().get(index));
+                StarShip.getInstance().setMainBody(ShipParts.getInstance().getMainBodies().get(index));
             }
         }, EXTRA_PART {
             public PartSelectionView onSlideView(ViewDirection direction) {
                 switch (direction) {
-                    case RIGHT:
-                        return POWER_CORE;
-                    case LEFT:
-                        return CANNON;
+                    case RIGHT: return CANNON;
+
+                    case LEFT: return POWER_CORE;
                     default:
                         return EXTRA_PART;
                 }
             }
 
             public void onPartSelected(int index) {
-                StarShip.SINGLETON.setExtraPart(ShipParts.getExtraParts().get(index));
+                StarShip.getInstance().setExtraPart(ShipParts.getInstance().getExtraParts().get(index));
             }
         }, CANNON {
             public PartSelectionView onSlideView(ViewDirection direction) {
                 switch (direction) {
-                    case RIGHT:
-                        return EXTRA_PART;
-                    case LEFT:
-                        return ENGINE;
+                    case RIGHT: return ENGINE;
+
+                    case LEFT: return EXTRA_PART;
+
                     default:
                         return CANNON;
                 }
             }
 
             public void onPartSelected(int index) {
-                StarShip.SINGLETON.setCannon(ShipParts.getCannons().get(index));
+                StarShip.getInstance().setCannon(ShipParts.getInstance().getCannons().get(index));
             }
         }, ENGINE {
             public PartSelectionView onSlideView(ViewDirection direction) {
                 switch (direction) {
-                    case RIGHT:
-                        return CANNON;
-                    case LEFT:
-                        return MAIN_BODY;
+                    case RIGHT: return MAIN_BODY;
+
+                    case LEFT: return CANNON;
+
                     default:
                         return ENGINE;
                 }
             }
 
             public void onPartSelected(int index) {
-                StarShip.SINGLETON.setEngine(ShipParts.getEngines().get(index));
+                StarShip.getInstance().setEngine(ShipParts.getInstance().getEngines().get(index));
             }
         }, POWER_CORE {
             public PartSelectionView onSlideView(ViewDirection direction) {
                 switch (direction) {
-                    case RIGHT:
-                        return MAIN_BODY;
-                    case LEFT:
-                        return EXTRA_PART;
+                    case RIGHT: return EXTRA_PART;
+
+                    case LEFT: return MAIN_BODY;
+
                     default:
                         return POWER_CORE;
                 }
             }
 
             public void onPartSelected(int index) {
-                StarShip.SINGLETON.setPowerCore(ShipParts.getPowerCores().get(index));
+                StarShip.getInstance().setPowerCore(ShipParts.getInstance().getPowerCores().get(index));
             }
         };
         public PartSelectionView onSlideView(ViewDirection direction){ return null;}
