@@ -73,7 +73,11 @@ public class ViewPort {
     }
 
     public static PointF worldToView(PointF position) {
-        return new PointF((position.x-posX),(position.y-posY));
+        return new PointF((position.x - posX), (position.y - posY));
+    }
+
+    public static PointF viewToWorld(PointF position) {
+        return new PointF((position.x + posX), (position.y + posY));
     }
 
     // src A rectangle in image coordinates specifying the portion of the image to draw
@@ -101,13 +105,18 @@ public class ViewPort {
         return viewHeight;
     }
 
+    public static int getWorldWidth() { return worldWidth; }
+
+    public static int getWorldHeight() { return worldHeight;}
+
     public static float getPosX() { return posX; }
     public static float getPosY() { return posY; }
 
     public static PointF getCenter() {
         return new PointF(viewWidth/2f, viewHeight/2f);
     }
-    public static boolean canMoveHorizontal(float distance) {
+
+    public static void moveHorizontal(float distance) {
         float newX = posX+distance;
         if((newX < 0) || (newX > (worldWidth-viewWidth))){
             if(newX < 0) {
@@ -116,15 +125,13 @@ public class ViewPort {
             else{
                 posX = (worldWidth-viewWidth);
             }
-            return false;
         }
         else {
             posX = newX;
-            return true;
         }
     }
 
-    public static boolean canMoveVertical(float distance) {
+    public static void moveVertical(float distance) {
         float newY = posY+distance;
         if((newY < 0) || (newY > (worldHeight-viewHeight))){
             if(newY < 0) {
@@ -133,11 +140,9 @@ public class ViewPort {
             else{
                 posY = (worldHeight-viewHeight);
             }
-            return false;
         }
         else {
             posY = newY;
-            return true;
         }
     }
 }

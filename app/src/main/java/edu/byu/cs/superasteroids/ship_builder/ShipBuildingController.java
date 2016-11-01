@@ -27,6 +27,26 @@ public class ShipBuildingController implements IShipBuildingController {
     public void onViewLoaded(IShipBuildingView.PartSelectionView partView) {
         shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.UP, false, "");
         shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.DOWN, false, "");
+        if(state == PartSelectionView.MAIN_BODY) {
+            shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.LEFT, true, "Power Core");
+            shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.RIGHT, true, "Engine");
+        }
+        if(state == PartSelectionView.ENGINE) {
+            shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.LEFT, true, "Main Body");
+            shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.RIGHT, true, "Cannon");
+        }
+        if(state == PartSelectionView.CANNON) {
+            shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.LEFT, true, "Engine");
+            shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.RIGHT, true, "Extra Part");
+        }
+        if(state == PartSelectionView.EXTRA_PART) {
+            shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.LEFT, true, "Cannon");
+            shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.RIGHT, true, "Power Core");
+        }
+        if(state == PartSelectionView.POWER_CORE) {
+            shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.LEFT, true, "Extra Part");
+            shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.RIGHT, true, "Main Body");
+        }
     }
 
     @Override

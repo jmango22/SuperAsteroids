@@ -1,12 +1,14 @@
 package edu.byu.cs.superasteroids.game_objects;
 
 import android.graphics.PointF;
+import android.view.VelocityTracker;
 
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
 import edu.byu.cs.superasteroids.core.GraphicsUtils;
+import edu.byu.cs.superasteroids.drawing.DrawingHelper;
 import edu.byu.cs.superasteroids.game.InputManager;
 import edu.byu.cs.superasteroids.model.Cannon;
 import edu.byu.cs.superasteroids.model.Engine;
@@ -70,28 +72,67 @@ public class StarShip {
         }
     }
 
-    public void moveHorizontal(float distance) {
-        if(ViewPort.canMoveHorizontal(distance)) {
-            this.setCenterLocation();
+    public void moveHorizontal(float distance, PointF worldPoint) {
+        float worldLeft = ViewPort.getViewWidth()/2f;
+        float worldRight = ViewPort.getWorldWidth()-(worldLeft);
+        if((ViewPort.getPosX() == 0) && (worldPoint.x < ViewPort.getViewWidth()/2f)) {
+            this.setLocation(new PointF((location.x + distance), location.y));
+        }
+        else if((ViewPort.getPosX() == (ViewPort.getWorldWidth()-ViewPort.getViewWidth())) && (worldPoint.x > (ViewPort.getWorldWidth()-(ViewPort.getViewWidth()/2f)))) {
+            this.setLocation(new PointF((location.x + distance), location.y));
+        }
+        else if(!((ViewPort.viewToWorld(location).x < worldLeft) || (ViewPort.viewToWorld(location).x > worldRight))) {
+            ViewPort.moveHorizontal(distance);
         }
         else {
             this.setLocation(new PointF((location.x + distance), location.y));
         }
     }
 
-    public void moveVertical(float distance) {
-        if(ViewPort.canMoveVertical(distance)) {
-            this.setCenterLocation();
+    public void moveVertical(float distance, PointF worldPoint) {
+        float worldTop = ViewPort.getViewHeight()/2f;
+        float worldBottom = ViewPort.getWorldHeight()-(worldTop);
+        if((ViewPort.getPosY() == 0) && (worldPoint.y < ViewPort.getViewHeight()/2f)) {
+            this.setLocation(new PointF(location.x, (location.y+distance)));
+        }
+        else if((ViewPort.getPosY() == (ViewPort.getWorldHeight()-ViewPort.getViewHeight())) && (worldPoint.y > (ViewPort.getWorldHeight()-(ViewPort.getViewHeight()/2f)))) {
+            this.setLocation(new PointF(location.x, (location.y+distance)));
+        }
+        else if(!((ViewPort.viewToWorld(location).y < worldTop) || (ViewPort.viewToWorld(location).y > worldBottom))) {
+            ViewPort.moveVertical(distance);
         }
         else {
-            this.setLocation(new PointF(location.x, (location.y + distance)));
+            this.setLocation(new PointF(location.x, (location.y+distance)));
         }
     }
 
+    public void setVelX(float differenceX) {
+        float tempX = speed*((differenceX/ViewPort.getViewWidth())/20);
+        if(tempX > 10) {
+            tempX = 10;
+        }
+        if(tempX < -10) {
+            tempX = -10;
+        }
+        velX = tempX;
+    }
+
+    public void setVelY(float differenceY) {
+        float tempY = speed*((differenceY/ViewPort.getViewHeight())/20);
+        if(tempY > 10) {
+            tempY = 10;
+        }
+        if(tempY < -10) {
+            tempY = -10;
+        }
+        velY = tempY;
+    }
+
     public void update() {
-        if(InputManager.movePoint != null) {
+        PointF movePoint;
+        if((movePoint = InputManager.movePoint) != null) {
             System.out.println("Move Point: "+InputManager.movePoint.toString());
-            PointF movePoint = InputManager.movePoint;
+            PointF worldPoint = ViewPort.viewToWorld(movePoint);
 
             float shipX = location.x;
             float shipY = location.y;
@@ -102,14 +143,14 @@ public class StarShip {
             float differenceX = pointX-shipX;
             float differenceY = pointY-shipY;
 
-            velX = speed*((differenceX/ViewPort.getViewWidth())/50);
-            velY = speed*((differenceY/ViewPort.getViewHeight())/50);
+            setVelX(differenceX);
+            setVelY(differenceY);
 
-            //System.out.println("Horizontal Speed: " + velX);
-            //System.out.println("Vertical Speed: " + velY);
+            System.out.println("Horizontal Speed: " + velX);
+            System.out.println("Vertical Speed: " + velY);
 
-            moveHorizontal(velX);
-            moveVertical(velY);
+            moveHorizontal(velX, worldPoint);
+            moveVertical(velY, worldPoint);
 
             double radians = Math.atan2(differenceY, differenceX) + (Math.PI/2);
 
@@ -121,9 +162,6 @@ public class StarShip {
         for(Laser laser : lasers) {
             if(!(laser.isOffScreen())) {
                 laser.update();
-            }
-            else {
-                lasers.remove(laser);
             }
         }
     }
@@ -169,16 +207,6 @@ public class StarShip {
 
     public void setLocation(PointF location) {
         this.location = location;
-    }
-
-    public void setCenterLocation() {
-        float centerX = ((float) ViewPort.getViewWidth()) / 2f;
-        float centerY = ((float) ViewPort.getViewHeight()) / 2f;
-        this.location = new PointF(centerX, centerY);
-    }
-
-    public PointF getLocation() {
-        return location;
     }
 
     public void setRandomParts() {
@@ -282,9 +310,4 @@ public class StarShip {
     public Engine getEngine () {
         return engine;
     }
-
-    public PowerCore getPowerCore () {
-        return powerCore;
-    }
-
 }
