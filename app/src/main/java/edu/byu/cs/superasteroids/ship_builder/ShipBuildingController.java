@@ -1,10 +1,12 @@
 package edu.byu.cs.superasteroids.ship_builder;
 
+import android.graphics.PointF;
+
 import edu.byu.cs.superasteroids.base.IView;
 import edu.byu.cs.superasteroids.content.ContentManager;
 import edu.byu.cs.superasteroids.drawing.DrawingHelper;
 import edu.byu.cs.superasteroids.model.ShipParts;
-import edu.byu.cs.superasteroids.model.StarShip;
+import edu.byu.cs.superasteroids.game_objects.StarShip;
 import edu.byu.cs.superasteroids.ship_builder.IShipBuildingView.PartSelectionView;
 
 
@@ -18,6 +20,7 @@ public class ShipBuildingController implements IShipBuildingController {
     public ShipBuildingController(ShipBuildingActivity shipBuildingActivity) {
         this.shipBuildingActivity = shipBuildingActivity;
         state = PartSelectionView.MAIN_BODY;
+        StarShip.getInstance().clearAll();
     }
 
     @Override
@@ -44,14 +47,18 @@ public class ShipBuildingController implements IShipBuildingController {
 
     @Override
     public void unloadContent(ContentManager content) {
-        System.out.println("Unloading all the images...");
-        ShipParts.getInstance().unloadUnusedParts();
+        //System.out.println("Unloading all the images...");
+        //ShipParts.getInstance().unloadUnusedParts();
     }
 
     @Override
     public void draw() {
         float posX = ((float)DrawingHelper.getGameViewWidth())/2f;
         float posY = ((float)DrawingHelper.getGameViewHeight())/2f;
+
+        StarShip.getInstance().setScaleX(.2f);
+        StarShip.getInstance().setScaleY(.2f);
+
         StarShip.getInstance().draw(posX, posY, .2f, .2f, 0f);
     }
 

@@ -53,6 +53,13 @@ public class Cannon extends Model{
         return emitPoint;
     }
 
+    public PointF getEmitPointCordinate() {
+        String[] emit = emitPoint.split(",");
+        float emitX = Float.parseFloat(emit[0]);
+        float emitY = Float.parseFloat(emit[1]);
+        return new PointF(emitX, emitY);
+    }
+
     public void setEmitPoint(String emitPoint) {
         this.emitPoint = emitPoint;
     }

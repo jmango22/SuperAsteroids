@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\Jon\\Documents\\Android\\SuperAsteroids\\app\\build\\intermediates\\res\\merged\\debug\\values-w480dp-v13\\values-w480dp-v13.xml",
+        "outputFile": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\Users\\Jon\\Documents\\Android\\SuperAsteroids\\app\\build\\intermediates\\res\\merged\\debug\\values-w480dp-v13\\values-w480dp-v13.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 112
                 },
                 "from": {
-                    "file": "C:\\Users\\Jon\\Documents\\Android\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
+                    "file": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\Users\\Jon\\Documents\\Android\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -30,7 +30,7 @@
                     "endOffset": 184
                 },
                 "from": {
-                    "file": "C:\\Users\\Jon\\Documents\\Android\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
+                    "file": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\Users\\Jon\\Documents\\Android\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -49,7 +49,7 @@
                     "endOffset": 245
                 },
                 "from": {
-                    "file": "C:\\Users\\Jon\\Documents\\Android\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
+                    "file": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\Users\\Jon\\Documents\\Android\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
@@ -62,7 +62,7 @@
         ]
     },
     {
-        "outputFile": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\res\\merged\\debug\\values-w480dp-v13\\values-w480dp-v13.xml",
+        "outputFile": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\res\\merged\\debug\\values-w480dp-v13\\values-w480dp-v13.xml",
         "map": [
             {
                 "to": {
@@ -73,7 +73,7 @@
                     "endOffset": 112
                 },
                 "from": {
-                    "file": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
+                    "file": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -92,7 +92,7 @@
                     "endOffset": 184
                 },
                 "from": {
-                    "file": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
+                    "file": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -111,7 +111,7 @@
                     "endOffset": 245
                 },
                 "from": {
-                    "file": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
+                    "file": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
@@ -124,7 +124,7 @@
         ]
     },
     {
-        "outputFile": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\res\\merged\\debug\\values-w480dp-v13\\values-w480dp-v13.xml",
+        "outputFile": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\res\\merged\\debug\\values-w480dp-v13\\values-w480dp-v13.xml",
         "map": [
             {
                 "to": {
@@ -135,7 +135,7 @@
                     "endOffset": 112
                 },
                 "from": {
-                    "file": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
+                    "file": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -154,7 +154,7 @@
                     "endOffset": 184
                 },
                 "from": {
-                    "file": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
+                    "file": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -173,7 +173,7 @@
                     "endOffset": 245
                 },
                 "from": {
-                    "file": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
+                    "file": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
@@ -186,7 +186,7 @@
         ]
     },
     {
-        "outputFile": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\res\\merged\\debug\\values-w480dp-v13\\values-w480dp-v13.xml",
+        "outputFile": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\res\\merged\\debug\\values-w480dp-v13\\values-w480dp-v13.xml",
         "map": [
             {
                 "to": {
@@ -197,7 +197,7 @@
                     "endOffset": 112
                 },
                 "from": {
-                    "file": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
+                    "file": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -216,7 +216,7 @@
                     "endOffset": 184
                 },
                 "from": {
-                    "file": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
+                    "file": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -235,7 +235,7 @@
                     "endOffset": 245
                 },
                 "from": {
-                    "file": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
+                    "file": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\C:\\Users\\Jon\\Documents\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
@@ -248,7 +248,7 @@
         ]
     },
     {
-        "outputFile": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\res\\merged\\debug\\values-w480dp-v13\\values-w480dp-v13.xml",
+        "outputFile": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\res\\merged\\debug\\values-w480dp-v13\\values-w480dp-v13.xml",
         "map": [
             {
                 "to": {
@@ -259,7 +259,7 @@
                     "endOffset": 112
                 },
                 "from": {
-                    "file": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
+                    "file": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -278,7 +278,7 @@
                     "endOffset": 184
                 },
                 "from": {
-                    "file": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
+                    "file": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -297,7 +297,7 @@
                     "endOffset": 245
                 },
                 "from": {
-                    "file": "C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
+                    "file": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\users\\guest\\j\\jmeng2\\Documents\\superasteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
@@ -310,7 +310,7 @@
         ]
     },
     {
-        "outputFile": "C:\\Users\\mengje\\Documents\\PProjects\\SuperAsteroids\\app\\build\\intermediates\\res\\merged\\debug\\values-w480dp-v13\\values-w480dp-v13.xml",
+        "outputFile": "/users/guest/j/jmeng2/Documents/superasteroids/app/build/intermediates/res/merged/debug/values-w480dp-v13/values-w480dp-v13.xml",
         "map": [
             {
                 "to": {
@@ -321,7 +321,7 @@
                     "endOffset": 112
                 },
                 "from": {
-                    "file": "C:\\Users\\mengje\\Documents\\PProjects\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
+                    "file": "/users/guest/j/jmeng2/Documents/superasteroids/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values-w480dp/values.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -340,7 +340,7 @@
                     "endOffset": 184
                 },
                 "from": {
-                    "file": "C:\\Users\\mengje\\Documents\\PProjects\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
+                    "file": "/users/guest/j/jmeng2/Documents/superasteroids/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values-w480dp/values.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -359,7 +359,69 @@
                     "endOffset": 245
                 },
                 "from": {
-                    "file": "C:\\Users\\mengje\\Documents\\PProjects\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
+                    "file": "/users/guest/j/jmeng2/Documents/superasteroids/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values-w480dp/values.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 863,
+                        "endColumn": 60,
+                        "endOffset": 919
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\Users\\mengje\\Documents\\PProjects\\SuperAsteroids\\app\\build\\intermediates\\res\\merged\\debug\\values-w480dp-v13\\values-w480dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 61,
+                    "endOffset": 112
+                },
+                "from": {
+                    "file": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\Users\\mengje\\Documents\\PProjects\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 280,
+                        "endColumn": 61,
+                        "endOffset": 337
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 117,
+                    "endColumn": 71,
+                    "endOffset": 184
+                },
+                "from": {
+                    "file": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\Users\\mengje\\Documents\\PProjects\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 567,
+                        "endColumn": 71,
+                        "endOffset": 634
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 189,
+                    "endColumn": 60,
+                    "endOffset": 245
+                },
+                "from": {
+                    "file": "/users/guest/j/jmeng2/Documents/superasteroids/C:\\Users\\mengje\\Documents\\PProjects\\SuperAsteroids\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-w480dp\\values.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,

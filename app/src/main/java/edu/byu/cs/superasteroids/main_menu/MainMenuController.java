@@ -1,10 +1,8 @@
 package edu.byu.cs.superasteroids.main_menu;
 
-import android.content.Context;
-
 import edu.byu.cs.superasteroids.base.IView;
 import edu.byu.cs.superasteroids.model.ShipParts;
-import edu.byu.cs.superasteroids.model.StarShip;
+import edu.byu.cs.superasteroids.game_objects.StarShip;
 
 /**
  * Created by Jon on 10/30/2016.
@@ -22,7 +20,7 @@ public class MainMenuController implements IMainMenuController {
 
         StarShip.getInstance().setRandomParts();
 
-        ShipParts.getInstance().unloadUnusedParts();
+        //ShipParts.getInstance().unloadUnusedParts();
 
         mainMenuView.startGame();
     }

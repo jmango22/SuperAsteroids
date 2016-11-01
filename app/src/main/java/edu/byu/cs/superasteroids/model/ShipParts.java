@@ -2,9 +2,9 @@ package edu.byu.cs.superasteroids.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import edu.byu.cs.superasteroids.database.SuperAsteroids_DAO;
+import edu.byu.cs.superasteroids.game_objects.StarShip;
 
 /**
  * Created by Jon on 10/27/2016.

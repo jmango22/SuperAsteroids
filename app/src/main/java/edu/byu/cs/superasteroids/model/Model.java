@@ -22,9 +22,8 @@ public class Model {
     private float posY;
     private float rotationDegrees = 0f;
 
-    // Default magic numbers, can be changed manually
-    private float scaleX = 1f;
-    private float scaleY = 1f;
+    private float scaleX;
+    private float scaleY;
     private int alpha = 255;
 
     // Used by the MainBody and by the Other parts to draw themselves
@@ -118,6 +117,10 @@ public class Model {
     public void setPosX (float posX) {
         this.posX = posX;
     }
+
+    public float getPosX() { return posX; }
+
+    public float getPosY() { return posY; }
 
     public void setPosY (float posY) {
         this.posY = posY;

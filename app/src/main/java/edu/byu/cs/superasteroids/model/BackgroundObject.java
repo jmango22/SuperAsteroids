@@ -1,6 +1,6 @@
 package edu.byu.cs.superasteroids.model;
 
-import org.json.JSONObject;
+import edu.byu.cs.superasteroids.content.ContentManager;
 
 /**
  * Created by Jon on 10/10/2016.
@@ -9,33 +9,28 @@ import org.json.JSONObject;
 public class BackgroundObject {
     private String image;
     private long id;
+    private int imageId;
 
     public BackgroundObject(String image) {
         this.image = image;
-
-        //System.out.println("BackgroundObject Created!");
-        //System.out.println(toString());
     }
 
-    public long getId() { return id; }
+    public void loadImage(ContentManager content) {
+        imageId = content.loadImage(image);
+    }
+
+    public void unloadImage(ContentManager content) {
+        content.unloadImage(imageId);
+    }
+
+    public int getImageId() { return imageId; }
 
     public void setId(long id) {
         this.id = id;
     }
-    /**
-     * Get the path to the background image file
-     * @return string path to background image
-     */
+
     public String getImage() {
         return image;
-    }
-
-    /**
-     * Set the path to the background image file
-     * @param image - string: file path
-     */
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public String toString() {

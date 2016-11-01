@@ -7,6 +7,9 @@ import org.json.JSONObject;
 import java.util.HashSet;
 import java.util.Set;
 
+import edu.byu.cs.superasteroids.content.ContentManager;
+import edu.byu.cs.superasteroids.database.SuperAsteroids_DAO;
+
 /**
  * Created by Jon on 10/10/2016.
  * Contains information describing a level
@@ -64,6 +67,24 @@ public class Level {
             JSONObject levelAsteroid = levelAsteroids.getJSONObject(i);
             LevelAsteroid temp = new LevelAsteroid(levelAsteroid);
             this.levelAsteroids.add(temp);
+        }
+    }
+
+    public void loadContent(ContentManager content) {
+        for(LevelObject levelObject : levelObjects) {
+            levelObject.loadImage(content);
+        }
+    }
+
+    public void draw() {
+        for(LevelObject levelObject : levelObjects) {
+            levelObject.draw();
+        }
+    }
+
+    public void unloadContent(ContentManager content) {
+        for(LevelObject levelObject : levelObjects) {
+            levelObject.unloadImage(content);
         }
     }
 
