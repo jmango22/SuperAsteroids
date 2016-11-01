@@ -8,23 +8,22 @@ import edu.byu.cs.superasteroids.drawing.DrawingHelper;
  */
 public class Background {
     String image;
-    int width;
-    int height;
     int imageId;
+
 
     public Background() {
         image = "images/space.bmp";
     }
 
     public void loadImage(ContentManager content) {
-        imageId = content.getInstance().loadImage(image);
+        imageId = content.loadImage(image);
     }
 
     public void unloadImage(ContentManager content) {
-        content.getInstance().unloadImage(imageId);
+        content.unloadImage(imageId);
     }
 
     public void draw() {
-        DrawingHelper.drawImage(imageId, ViewPort.getViewInWorld(), ViewPort.getViewPort());
+        DrawingHelper.drawImage(imageId, ViewPort.getSrc(imageId), ViewPort.getDest());
     }
 }

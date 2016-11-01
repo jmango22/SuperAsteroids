@@ -27,9 +27,6 @@ public class ViewPort {
     private static float posX=0f;
     private static float posY=0f;
 
-    private static Rect viewRect;
-    private static Rect worldRect;
-
     public ViewPort() {
         getNextLevel();
     }
@@ -79,14 +76,21 @@ public class ViewPort {
         return new PointF((position.x-posX),(position.y-posY));
     }
 
-    public static Rect getViewPort() {
-        viewRect = new Rect(0, 0, viewWidth, viewHeight);
-        return viewRect;
+    // src A rectangle in image coordinates specifying the portion of the image to draw
+
+
+    // dest A rectangle in view coordinates specifying where to draw the portion of the image
+    public static Rect getDest() {
+        Rect destRect = new Rect(0, 0, viewWidth, viewHeight);
+        return destRect;
     }
 
-    public static Rect getViewInWorld() {
-        worldRect = new Rect((int)posX, (int)posY, viewWidth+(int)posX, viewHeight+(int)posY);
-        return worldRect;
+    // src A rectangle in image coordinates specifying the portion of the image to draw
+    public static Rect getSrc(int imageId) {
+        float scaleX = ((float)ContentManager.getInstance().getImage(imageId).getWidth())/((float)worldWidth);
+        float scaleY = ((float)ContentManager.getInstance().getImage(imageId).getHeight())/((float)worldHeight);
+        Rect srcRect = new Rect((int)(posX*scaleX), (int)(posY*scaleY), (int)((posX+viewWidth)*scaleX), (int)((posY+viewHeight)*scaleY));
+        return srcRect;
     }
 
     public static int getViewWidth() {
