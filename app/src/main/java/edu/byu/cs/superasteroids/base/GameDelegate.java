@@ -1,7 +1,7 @@
 package edu.byu.cs.superasteroids.base;
 
 import edu.byu.cs.superasteroids.content.ContentManager;
-import edu.byu.cs.superasteroids.game_objects.ViewPort;
+import edu.byu.cs.superasteroids.model.level.ViewPort;
 
 /**
  * Created by Jon on 10/30/2016.

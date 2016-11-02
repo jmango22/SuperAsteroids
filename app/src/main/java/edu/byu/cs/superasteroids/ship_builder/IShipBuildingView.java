@@ -3,8 +3,8 @@ package edu.byu.cs.superasteroids.ship_builder;
 import java.util.List;
 
 import edu.byu.cs.superasteroids.base.IView;
-import edu.byu.cs.superasteroids.model.ShipParts;
-import edu.byu.cs.superasteroids.game_objects.StarShip;
+import edu.byu.cs.superasteroids.model.ship.ShipParts;
+import edu.byu.cs.superasteroids.model.ship.StarShip;
 
 /**
  * An interface used by a ShipBuildingController to control the view.

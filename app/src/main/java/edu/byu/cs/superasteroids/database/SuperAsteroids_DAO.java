@@ -3,7 +3,6 @@ package edu.byu.cs.superasteroids.database;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
@@ -11,16 +10,16 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import edu.byu.cs.superasteroids.model.Asteroid;
-import edu.byu.cs.superasteroids.model.BackgroundObject;
-import edu.byu.cs.superasteroids.model.Cannon;
-import edu.byu.cs.superasteroids.model.Engine;
-import edu.byu.cs.superasteroids.model.ExtraPart;
-import edu.byu.cs.superasteroids.model.Level;
-import edu.byu.cs.superasteroids.model.LevelAsteroid;
-import edu.byu.cs.superasteroids.model.LevelObject;
-import edu.byu.cs.superasteroids.model.MainBody;
-import edu.byu.cs.superasteroids.model.PowerCore;
+import edu.byu.cs.superasteroids.model.asteroids.Asteroid;
+import edu.byu.cs.superasteroids.model.level.BackgroundObject;
+import edu.byu.cs.superasteroids.model.ship.Cannon;
+import edu.byu.cs.superasteroids.model.ship.Engine;
+import edu.byu.cs.superasteroids.model.ship.ExtraPart;
+import edu.byu.cs.superasteroids.model.level.Level;
+import edu.byu.cs.superasteroids.model.level.LevelAsteroid;
+import edu.byu.cs.superasteroids.model.level.LevelObject;
+import edu.byu.cs.superasteroids.model.ship.MainBody;
+import edu.byu.cs.superasteroids.model.ship.PowerCore;
 
 
 /**

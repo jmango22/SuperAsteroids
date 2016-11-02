@@ -1,58 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="x86_64,x86"
+    abi="armeabi-v7a,armeabi"
     api-level="22"
     density="mdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="19544809524668"
-    token="-4913509476671576793"
-    verifier="COLD_SWAP_REQUESTED" >
+    timestamp="335466290894356"
+    token="-4880584086353531469"
+    verifier="INITIAL_BUILD" >
 
     <task
         name="javac"
-        duration="675" />
+        duration="4196" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="35" />
+        duration="1907" />
     <task
         name="verifier"
-        duration="6" />
+        duration="308" />
 
     <artifact
-        location="C:\Users\mengje\Documents\PProjects\SuperAsteroids\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_0\classes.dex"
-        type="DEX" />
+        location="C:\Users\Jon\Documents\Android\SuperAsteroids\app\build\outputs\apk\app-debug.apk"
+        type="MAIN" />
 
     <build
-        timestamp="14485592262256"
-        verifier="FULL_BUILD_REQUESTED" >
+        timestamp="335466290894356"
+        verifier="INITIAL_BUILD" >
         <artifact
-            location="C:\Users\mengje\Documents\PProjects\SuperAsteroids\app\build\outputs\apk\app-debug.apk"
+            location="C:\Users\Jon\Documents\Android\SuperAsteroids\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
-    </build>
-    <build
-        timestamp="18246253906254"
-        verifier="METHOD_DELETED" >
-        <artifact
-            location="C:\Users\mengje\Documents\PProjects\SuperAsteroids\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_5\classes.dex"
-            type="DEX" />
-    </build>
-    <build
-        timestamp="19251860203660"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="C:\Users\mengje\Documents\PProjects\SuperAsteroids\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
-            type="DEX" />
-    </build>
-    <build
-        timestamp="19544809524668"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="C:\Users\mengje\Documents\PProjects\SuperAsteroids\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_0\classes.dex"
-            type="DEX" />
     </build>
 
 </instant-run>

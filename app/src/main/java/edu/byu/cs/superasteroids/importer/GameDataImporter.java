@@ -1,8 +1,5 @@
 package edu.byu.cs.superasteroids.importer;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -10,16 +7,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
-import edu.byu.cs.superasteroids.database.DbOpenHelper;
 import edu.byu.cs.superasteroids.database.SuperAsteroids_DAO;
-import edu.byu.cs.superasteroids.model.Asteroid;
-import edu.byu.cs.superasteroids.model.BackgroundObject;
-import edu.byu.cs.superasteroids.model.Cannon;
-import edu.byu.cs.superasteroids.model.Engine;
-import edu.byu.cs.superasteroids.model.ExtraPart;
-import edu.byu.cs.superasteroids.model.Level;
-import edu.byu.cs.superasteroids.model.MainBody;
-import edu.byu.cs.superasteroids.model.PowerCore;
+import edu.byu.cs.superasteroids.model.asteroids.Asteroid;
+import edu.byu.cs.superasteroids.model.level.BackgroundObject;
+import edu.byu.cs.superasteroids.model.ship.Cannon;
+import edu.byu.cs.superasteroids.model.ship.Engine;
+import edu.byu.cs.superasteroids.model.ship.ExtraPart;
+import edu.byu.cs.superasteroids.model.level.Level;
+import edu.byu.cs.superasteroids.model.ship.MainBody;
+import edu.byu.cs.superasteroids.model.ship.PowerCore;
 
 /**
  * Created by jmeng2 on 10/22/16.
