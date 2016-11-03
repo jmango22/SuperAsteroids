@@ -1,11 +1,15 @@
 package edu.byu.cs.superasteroids.model.ship;
 
 import android.graphics.PointF;
+import android.graphics.Rect;
 import android.provider.Settings;
+
+import java.util.List;
 
 import edu.byu.cs.superasteroids.content.ContentManager;
 import edu.byu.cs.superasteroids.core.GraphicsUtils;
 import edu.byu.cs.superasteroids.drawing.DrawingHelper;
+import edu.byu.cs.superasteroids.model.asteroids.Asteroid;
 import edu.byu.cs.superasteroids.model.level.ViewPort;
 
 /**
@@ -26,6 +30,7 @@ public class Laser {
     float scaleX;
     float scaleY;
     int adjusting = 4;
+    boolean hit = false;
 
     public Laser() {
         Cannon cannon = StarShip.getInstance().getCannon();
@@ -42,21 +47,25 @@ public class Laser {
         return new PointF(original.x*scaleX, original.y*scaleY);
     }
 
-    public void update() {
-        if(adjusting > 0) {
+    public void update(List<Asteroid> asteroids) {
+        if (adjusting > 0) {
             startingValues();
             adjusting = adjusting - 1;
-        }
-        else {
+        } else {
             posX = posX + velocityX;
             posY = posY + velocityY;
+        }
+        for(Asteroid asteroid : asteroids) {
+            if (didHitAsteroid(asteroid)) {
+                hit = true;
+            }
         }
     }
 
     public void draw() {
-        if(adjusting <= 0) {
-            System.out.println("Drawing laser...");
-            System.out.println(toString());
+        if (adjusting <= 0) {
+            //System.out.println("Drawing laser...");
+            //System.out.println(toString());
             DrawingHelper.drawImage(imageId, posX, posY, rotationDegrees, scaleX, scaleY, 255);
         }
     }
@@ -87,8 +96,8 @@ public class Laser {
 
         setVelocities();
 
-        System.out.println("VelX: "+velocityX);
-        System.out.println("VelY: "+velocityY);
+        //System.out.println("VelX: "+velocityX);
+        //System.out.println("VelY: "+velocityY);
 
         PointF attachPoint = new PointF(((float)imageWidth*1.5f), ((float)imageHeight));
         PointF partCenter = new PointF((((float)imageWidth)/2f),(((float)imageHeight)/2f));
@@ -118,6 +127,25 @@ public class Laser {
 
     public String toString() {
         return "imageId: "+imageId+" posX: "+posX+" posY: "+posY+" rotationDegrees: "+rotationDegrees+" scaleX: "+scaleX+" scaleY: "+scaleY;
+    }
+
+    public PointF getWorldHitPoint() {
+        //PointF rotatedPoint = GraphicsUtils.rotate(new PointF(posX, posY), Math.cos(rotationDegrees), Math.sin(rotationDegrees));
+        return ViewPort.viewToWorld(new PointF(posX, posY));
+    }
+
+    private boolean didHitAsteroid(Asteroid asteroid) {
+        PointF worldCord = ViewPort.viewToWorld(new PointF(posX, posY));
+        if(asteroid.getWorldRect().contains((int)worldCord.x, (int)worldCord.y)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public boolean isHit() {
+        return hit;
     }
 
     /*

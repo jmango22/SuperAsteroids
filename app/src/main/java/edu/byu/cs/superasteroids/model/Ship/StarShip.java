@@ -1,6 +1,7 @@
 package edu.byu.cs.superasteroids.model.ship;
 
 import android.graphics.PointF;
+import android.graphics.Rect;
 
 import java.util.Random;
 
@@ -285,5 +286,14 @@ public class StarShip {
 
     public Engine getEngine () {
         return engine;
+    }
+
+    public Rect getSpaceShip() {
+        float left = ViewPort.viewToWorld(location).x-(extraPart.getCenter().y)+(extraPart.getImageWidth()*extraPart.getScaleX());
+        float right = ViewPort.viewToWorld(location).x+(cannon.getImageHeight()*cannon.getScaleX());
+        float top = ViewPort.viewToWorld(location).y+((mainBody.getImageHeight()/2f)*mainBody.getScaleY());
+        float bottom = ViewPort.viewToWorld(location).y;
+
+        return null;
     }
 }

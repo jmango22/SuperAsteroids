@@ -7,11 +7,14 @@ import android.graphics.drawable.RotateDrawable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import edu.byu.cs.superasteroids.content.ContentManager;
 import edu.byu.cs.superasteroids.drawing.DrawingHelper;
 import edu.byu.cs.superasteroids.model.level.ViewPort;
+import edu.byu.cs.superasteroids.model.ship.Laser;
 
 /**
  * Created by Jon on 10/10/2016.
@@ -34,13 +37,14 @@ public class Asteroid {
     private float velX;
     private float velY;
 
-    private float scaleX = .3f;
-    private float scaleY = .3f;
+    private float scaleX = 1f;
+    private float scaleY = 1f;
 
     private int alpha = 255;
     private float rotationDegrees = 0f;
 
-    private int health = 1;
+    private int health = 2;
+    boolean start = true;
 
     /**
      * Creates an Asteroid
@@ -56,20 +60,34 @@ public class Asteroid {
         this.setImageWidth(imageWidth);
         this.setImageHeight(imageHeight);
         this.setType(type);
+    }
 
-        setInitialPosition();
-        if(posX > ViewPort.getCenter().x) {
-            velX = 3f;
-        }
-        else {
-            velX = -3f;
-        }
-        if(posY > ViewPort.getCenter().y) {
-            velY = 3f;
-        }
-        else {
-            velY = -3f;
-        }
+    public Asteroid(Asteroid asteroid) {
+        this.setName(asteroid.getName());
+        this.setImage(asteroid.getImage());
+        this.setImageWidth(asteroid.getImageWidth());
+        this.setImageHeight(asteroid.getImageHeight());
+        this.setType(asteroid.getType());
+
+
+        Random random = new Random();
+        velX = random.nextFloat() * (0 - 7) -3.5f;
+        velY = random.nextFloat() * (0 - 7) -3.5f;
+    }
+
+    // This makes a new child asteroid from the parent, needs to be run however many times depending on the parent
+    public Asteroid(Asteroid parent, float posX, float posY) {
+        this.setName(parent.getName());
+        this.setImage(parent.getImage());
+        this.setImageWidth(parent.getImageWidth());
+        this.setImageHeight(parent.getImageHeight());
+        this.setType(parent.getType());
+
+        this.posX = posX;
+        this.posY = posY;
+        Random random = new Random();
+        velX = random.nextFloat() * (0 - 7) -3.5f;
+        velY = random.nextFloat() * (0 - 7) -3.5f;
     }
 
     /**
@@ -116,26 +134,53 @@ public class Asteroid {
         }
     }
 
-    public void loadImage() {
-        imageId = ContentManager.getInstance().loadImage(image);
+    public void loadImage(ContentManager content) {
+        imageId = content.loadImage(image);
     }
 
-    public void unloadImage() {
-        ContentManager.getInstance().unloadImage(imageId);
+    public void unloadImage(ContentManager content) {
+        content.unloadImage(imageId);
     }
 
-    public void update() {
-        if((posX > ViewPort.getWorldWidth()) || (posX < 0)) {
-            velX = velX*-1;
+    public void update(List<Asteroid> asteroids, Set<Laser> lasers) {
+        if(start) {
+            setInitialPosition();
+            start = false;
         }
-        if((posY > ViewPort.getWorldHeight()) || (posY < 0)) {
-            velY = velY*-1;
+        if ((posX >= ViewPort.getWorldWidth()) || (posX <= 0)) {
+            velX = velX * -1;
         }
+        if ((posY >= ViewPort.getWorldHeight()) || (posY <= 0)) {
+            velY = velY * -1;
+        }
+        for(Laser laser : lasers) {
+            testLaserCollision(laser);
+        }
+        for(Asteroid asteroid : asteroids) {
+            testAsteroidCollision(asteroid);
+        }
+
+        posX = posX + velX;
+        posY = posY + velY;
     }
 
     public void draw() {
         PointF viewCoordinate = ViewPort.worldToView(new PointF(posX, posY));
         DrawingHelper.drawImage(imageId, viewCoordinate.x, viewCoordinate.y, rotationDegrees, scaleX, scaleY, alpha);
+    }
+
+    private void testAsteroidCollision(Asteroid asteroid) {
+        if(getWorldRect().intersect(asteroid.getWorldRect())) {
+            velX = velX * -1;
+            velY = velY * -1;
+        }
+    }
+
+    private void testLaserCollision(Laser laser) {
+        if(getWorldRect().contains((int)laser.getWorldHitPoint().x, (int)laser.getWorldHitPoint().y)) {
+            System.out.println("Laser hit asteroid!");
+            health = health-1;
+        }
     }
 
     public int getHealth() { return health; }
@@ -238,5 +283,15 @@ public class Asteroid {
 
     public int getImageHeight() {
         return imageHeight;
+    }
+
+    public Rect getWorldRect() {
+        float left = posX-((getImageWidth()/2f)*scaleX);
+        float right = posX+((getImageWidth()/2f)*scaleX);
+        float top = posY-((getImageHeight()/2f)*scaleY);
+        float bottom = posY+((getImageHeight()/2f)*scaleY);
+        Rect asteroid = new Rect((int)left, (int)top, (int)right, (int)bottom);
+        //System.out.println("Asteroid rect: "+asteroid);
+        return asteroid;
     }
 }

@@ -6,7 +6,7 @@ package edu.byu.cs.superasteroids.model.asteroids;
 
 public class RegularAsteroid extends Asteroid {
 
-    public RegularAsteroid(String name, String image, int imageWidth, int imageHeight, String type) {
-        super(name, image, imageWidth, imageHeight, type);
+    public RegularAsteroid(Asteroid asteroid) {
+        super(asteroid);
     }
 }

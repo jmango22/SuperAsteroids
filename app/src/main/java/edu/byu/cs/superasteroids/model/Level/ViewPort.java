@@ -46,6 +46,12 @@ public class ViewPort {
             StarShip.getInstance().draw();
         }
 
+        if(level.getAsteroids().size() == 0) {
+            getNextLevel();
+        }
+
+        level.update(lasers);
+
         StarShip.getInstance().update();
 
         if(InputManager.firePressed) {
@@ -54,8 +60,8 @@ public class ViewPort {
 
         for(Iterator<Laser> iterator = lasers.iterator(); iterator.hasNext(); ) {
             Laser laser = iterator.next();
-            if(!(laser.isOffScreen())) {
-                laser.update();
+            if((!laser.isOffScreen()) && (!laser.isHit())) {
+                laser.update(level.getAsteroids());
             }
             else {
                 iterator.remove();
@@ -82,11 +88,10 @@ public class ViewPort {
 
     public void unloadContent(ContentManager content) {
         background.unloadImage(content);
-
         level.unloadContent(content);
     }
 
-    public void getNextLevel() {
+    private void getNextLevel() {
         levelNumber = levelNumber+1;
         setLevel(SuperAsteroids_DAO.getInstance().getLevel(levelNumber));
     }

@@ -5,7 +5,7 @@ package edu.byu.cs.superasteroids.model.asteroids;
  */
 
 public class OcteroidAsteroid extends Asteroid {
-    public OcteroidAsteroid(String name, String image, int imageWidth, int imageHeight, String type) {
-        super(name, image, imageWidth, imageHeight, type);
+    public OcteroidAsteroid(Asteroid asteroid) {
+        super(asteroid);
     }
 }

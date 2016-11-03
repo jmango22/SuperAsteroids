@@ -1,26 +1,27 @@
 package edu.byu.cs.superasteroids.model.asteroids;
 
+import java.util.List;
+import java.util.Set;
+
 import edu.byu.cs.superasteroids.model.level.ViewPort;
+import edu.byu.cs.superasteroids.model.ship.Laser;
 
 /**
  * Created by Jon on 11/2/2016.
  */
 
 public class GrowingAsteroid extends Asteroid {
-    public GrowingAsteroid(String name, String image, int imageWidth, int imageHeight, String type) {
-        super(name, image, imageWidth, imageHeight, type);
+    public GrowingAsteroid(Asteroid asteroid) {
+        super(asteroid);
         this.setHealth(1);
     }
 
     @Override
-    public void update() {
-        if((getPosX() > ViewPort.getWorldWidth()) || (getPosX() < 0)) {
-            setVelX(getVelX()*-1);
+    public void update(List<Asteroid> asteroids, Set<Laser> lasers) {
+        super.update(asteroids, lasers);
+        if((getScaleX() < 3f) && (getScaleY() < 3f)) {
+            setScaleX(getScaleX() + .001f);
+            setScaleY(getScaleY() + .001f);
         }
-        if((getPosY()> ViewPort.getWorldHeight()) || (getPosY() < 0)) {
-            setVelY(getVelY()*-1);
-        }
-        setScaleX(getScaleX()*1.01f);
-        setScaleY(getScaleY()*1.01f);
     }
 }
