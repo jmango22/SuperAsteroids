@@ -5,33 +5,50 @@
     density="mdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="335466290894356"
-    token="-4880584086353531469"
-    verifier="INITIAL_BUILD" >
+    timestamp="31678244709983"
+    token="-4913509476671576793"
+    verifier="METHOD_DELETED" >
 
     <task
         name="javac"
-        duration="4196" />
+        duration="678" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="1907" />
+        duration="59" />
     <task
         name="verifier"
-        duration="308" />
+        duration="5" />
 
     <artifact
-        location="C:\Users\Jon\Documents\Android\SuperAsteroids\app\build\outputs\apk\app-debug.apk"
-        type="MAIN" />
+        location="C:\Users\mengje\Documents\PProjects\SuperAsteroids\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_2\classes.dex"
+        type="DEX" />
 
     <build
-        timestamp="335466290894356"
-        verifier="INITIAL_BUILD" >
+        timestamp="26074603033138"
+        verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="C:\Users\Jon\Documents\Android\SuperAsteroids\app\build\outputs\apk\app-debug.apk"
+            location="C:\Users\mengje\Documents\PProjects\SuperAsteroids\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
+    </build>
+    <build
+        timestamp="31298708870172"
+        verifier="METHOD_ADDED" >
+        <artifact
+            location="C:\Users\mengje\Documents\PProjects\SuperAsteroids\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
+            type="DEX" />
+        <artifact
+            location="C:\Users\mengje\Documents\PProjects\SuperAsteroids\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_0\classes.dex"
+            type="DEX" />
+    </build>
+    <build
+        timestamp="31678244709983"
+        verifier="METHOD_DELETED" >
+        <artifact
+            location="C:\Users\mengje\Documents\PProjects\SuperAsteroids\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_2\classes.dex"
+            type="DEX" />
     </build>
 
 </instant-run>

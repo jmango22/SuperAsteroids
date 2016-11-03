@@ -8,15 +8,18 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Set;
 
 import edu.byu.cs.superasteroids.content.ContentManager;
 import edu.byu.cs.superasteroids.database.SuperAsteroids_DAO;
+import edu.byu.cs.superasteroids.game.InputManager;
 import edu.byu.cs.superasteroids.model.asteroids.Asteroid;
 import edu.byu.cs.superasteroids.model.asteroids.GrowingAsteroid;
 import edu.byu.cs.superasteroids.model.asteroids.OcteroidAsteroid;
 import edu.byu.cs.superasteroids.model.asteroids.RegularAsteroid;
 import edu.byu.cs.superasteroids.model.ship.Laser;
+import edu.byu.cs.superasteroids.model.ship.StarShip;
 
 /**
  * Created by Jon on 10/10/2016.
@@ -32,6 +35,7 @@ public class Level {
     private Set<LevelObject> levelObjects;
     private Set<LevelAsteroid> levelAsteroids;
     private List<Asteroid> asteroids = new LinkedList<>();
+    private List<Laser> lasers = new LinkedList<>();
 
     public Level(Set<LevelAsteroid> levelAsteroids, String title, String hint, int width, String music, Set<LevelObject> levelObjects, int height, int number) {
         this.levelAsteroids = levelAsteroids;
@@ -109,16 +113,65 @@ public class Level {
         }
     }
 
-    public void update(Set<Laser> lasers) {
-        for(Iterator<Asteroid> iterator = asteroids.iterator(); iterator.hasNext(); ) {
+    public void update() {
+        for(ListIterator<Asteroid> iterator = asteroids.listIterator(); iterator.hasNext(); ) {
             Asteroid asteroid = iterator.next();
             List<Asteroid> testAsteroids = new LinkedList<>(asteroids);
             testAsteroids.remove(asteroid);
-            if(asteroid.getHealth() > 0) {
-                asteroid.update(testAsteroids, lasers);
+
+            asteroid.update();
+            if(asteroid.testCollision(StarShip.getInstance())) {
+                StarShip.getInstance().collide(asteroid);
             }
             else {
+                if(StarShip.getInstance().testCollision(asteroid)) {
+                    asteroid.collide();
+                }
+            }
+
+            for(Iterator<Laser> LaserIt = lasers.iterator(); LaserIt.hasNext(); ) {
+                Laser laser = LaserIt.next();
+                if((!laser.isOffScreen()) && (!laser.testCollision(asteroid))) {
+                    laser.update();
+                }
+                else {
+                    asteroid.testCollision(laser);
+                    LaserIt.remove();
+                }
+            }
+
+
+
+
+
+            if(asteroid.getHealth() <= 0) {
                 iterator.remove();
+                if (asteroid.canSplit()) {
+                    if (asteroid.getType().equals("octeroid")) {
+                        for (int i = 0; i < 8; i++) {
+                            OcteroidAsteroid child = new OcteroidAsteroid(asteroid, asteroid.getPosX(), asteroid.getPosY());
+                            iterator.add(child);
+                        }
+                    } else if (asteroid.getType().equals("regular")) {
+                        for (int i = 0; i < 2; i++) {
+                            RegularAsteroid child = new RegularAsteroid(asteroid, asteroid.getPosX(), asteroid.getPosY());
+                            iterator.add(child);
+                        }
+                    } else {
+                        for (int i = 0; i < 2; i++) {
+                            GrowingAsteroid child = new GrowingAsteroid(asteroid, asteroid.getPosX(), asteroid.getPosY());
+                            iterator.add(child);
+                        }
+                    }
+                }
+            }
+        }
+
+        StarShip.getInstance().update();
+
+        if(StarShip.getInstance().getHealth() > 0) {
+            if (InputManager.firePressed) {
+                lasers.add(new Laser());
             }
         }
     }
@@ -129,6 +182,10 @@ public class Level {
         }
         for(Asteroid asteroid : asteroids) {
             asteroid.draw();
+        }
+        StarShip.getInstance().draw();
+        for(Laser laser : lasers) {
+            laser.draw();
         }
     }
 

@@ -25,6 +25,9 @@ public class ShipBuildingController implements IShipBuildingController {
     public void onViewLoaded(IShipBuildingView.PartSelectionView partView) {
         shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.UP, false, "");
         shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.DOWN, false, "");
+        if(StarShip.getInstance().isComplete()) {
+            shipBuildingActivity.setStartGameButton(true);
+        }
         if(state == PartSelectionView.MAIN_BODY) {
             shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.LEFT, true, "Power Core");
             shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.RIGHT, true, "Engine");

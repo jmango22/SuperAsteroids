@@ -278,6 +278,8 @@ public class SuperAsteroids_DAO {
             String music = cursor.getString(5);
 
             level = new Level(levelAsteroids, title, hint, width, music, levelObjects, height, number);
+        } catch(Exception e) {
+            return null;
         }
         finally {
             cursor.close();

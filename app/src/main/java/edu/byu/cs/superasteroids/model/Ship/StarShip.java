@@ -3,10 +3,13 @@ package edu.byu.cs.superasteroids.model.ship;
 import android.graphics.PointF;
 import android.graphics.Rect;
 
+import java.util.List;
 import java.util.Random;
 
 import edu.byu.cs.superasteroids.core.GraphicsUtils;
+import edu.byu.cs.superasteroids.drawing.DrawingHelper;
 import edu.byu.cs.superasteroids.game.InputManager;
+import edu.byu.cs.superasteroids.model.asteroids.Asteroid;
 import edu.byu.cs.superasteroids.model.level.ViewPort;
 
 /**
@@ -21,6 +24,7 @@ public class StarShip {
     private PowerCore powerCore;
     private float rotationDegrees;
     private float speed;
+    private int health;
 
     private float velX;
     private float velY;
@@ -29,6 +33,7 @@ public class StarShip {
     private float scaleY;
 
     private PointF location = ViewPort.getCenter();
+    private int safeTime = 0;
 
     //Singleton instance
     private static volatile StarShip instance;
@@ -119,46 +124,66 @@ public class StarShip {
     }
 
     public void update() {
-        PointF movePoint;
-        if((movePoint = InputManager.movePoint) != null) {
-            System.out.println("Move Point: "+InputManager.movePoint.toString());
-            PointF worldPoint = ViewPort.viewToWorld(movePoint);
+        if(health > 0) {
+            PointF movePoint;
+            if (safeTime > 0) {
+                safeTime = safeTime - 1;
+                System.out.println("SafeTime: " + safeTime);
+            }
+            else {
+                System.out.println("SafeTime: " + safeTime);
+            }
+            if ((movePoint = InputManager.movePoint) != null) {
+                //System.out.println("Move Point: "+InputManager.movePoint.toString());
+                PointF worldPoint = ViewPort.viewToWorld(movePoint);
 
-            float shipX = location.x;
-            float shipY = location.y;
+                float shipX = location.x;
+                float shipY = location.y;
 
-            float pointX = movePoint.x;
-            float pointY = movePoint.y;
+                float pointX = movePoint.x;
+                float pointY = movePoint.y;
 
-            float differenceX = pointX-shipX;
-            float differenceY = pointY-shipY;
+                float differenceX = pointX - shipX;
+                float differenceY = pointY - shipY;
 
-            setVelX(differenceX);
-            setVelY(differenceY);
+                setVelX(differenceX);
+                setVelY(differenceY);
 
-            System.out.println("Horizontal Speed: " + velX);
-            System.out.println("Vertical Speed: " + velY);
+                //System.out.println("Horizontal Speed: " + velX);
+                //System.out.println("Vertical Speed: " + velY);
 
-            moveHorizontal(velX, worldPoint);
-            moveVertical(velY, worldPoint);
+                moveHorizontal(velX, worldPoint);
+                moveVertical(velY, worldPoint);
 
-            double radians = Math.atan2(differenceY, differenceX) + (Math.PI/2);
+                double radians = Math.atan2(differenceY, differenceX) + (Math.PI / 2);
 
-            StarShip.getInstance().setRotationDegrees((float)GraphicsUtils.radiansToDegrees(radians));
+                StarShip.getInstance().setRotationDegrees((float) GraphicsUtils.radiansToDegrees(radians));
+            }
         }
     }
 
+    public int getSafeTime() { return safeTime; }
+
+    public void setSafeTime(int safeTime) {
+        this.safeTime = safeTime;
+    }
+
     public void draw() {
-        if(mainBody != null) {
-            mainBody.draw(location.x, location.y, .3f, .3f, rotationDegrees);
-            if(cannon != null) {
-                cannon.draw(mainBody, mainBody.getCannonAttach());
+        if(health > 0) {
+            if (mainBody != null) {
+                mainBody.draw(location.x, location.y, .3f, .3f, rotationDegrees);
+                if (cannon != null) {
+                    cannon.draw(mainBody, mainBody.getCannonAttach());
+                }
+                if (extraPart != null) {
+                    extraPart.draw(mainBody, mainBody.getExtraAttach());
+                }
+                if (engine != null) {
+                    engine.draw(mainBody, mainBody.getEngineAttach());
+                }
             }
-            if(extraPart != null) {
-                extraPart.draw(mainBody, mainBody.getExtraAttach());
-            }
-            if(engine != null) {
-                engine.draw(mainBody, mainBody.getEngineAttach());
+            if (safeTime > 0) {
+                DrawingHelper.drawFilledCircle(location, ((float) health * 15f), 180, 120);
             }
         }
     }
@@ -180,6 +205,29 @@ public class StarShip {
                 engine.draw(mainBody, mainBody.getEngineAttach());
             }
         }
+    }
+
+    public void collide(Asteroid asteroid) {
+        health = health - 1;
+        safeTime = 180;
+        System.out.println("ShipHealth: " + health);
+    }
+
+    public boolean testCollision(Asteroid asteroid) {
+        if(getSafeTime() <= 0) {
+            if (getSpaceShipSpace().intersect(asteroid.getWorldRect())) {
+                health = health - 1;
+                safeTime = 180;
+                System.out.println("ShipHealth: " + health);
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 
     public void setLocation(PointF location) {
@@ -288,12 +336,16 @@ public class StarShip {
         return engine;
     }
 
-    public Rect getSpaceShip() {
-        float left = ViewPort.viewToWorld(location).x-(extraPart.getCenter().y)+(extraPart.getImageWidth()*extraPart.getScaleX());
-        float right = ViewPort.viewToWorld(location).x+(cannon.getImageHeight()*cannon.getScaleX());
-        float top = ViewPort.viewToWorld(location).y+((mainBody.getImageHeight()/2f)*mainBody.getScaleY());
-        float bottom = ViewPort.viewToWorld(location).y;
+    public int getHealth() { return health; }
 
-        return null;
+    public Rect getSpaceShipSpace() {
+        PointF center = ViewPort.viewToWorld(location);
+        float radius = cannon.getImageWidth()*cannon.getScaleX();
+        float left = center.x-radius;
+        float right = center.x+radius;
+        float top = center.y+radius;
+        float bottom = center.y-radius;
+        Rect ship = new Rect((int)left, (int)top, (int)right, (int)bottom);
+        return ship;
     }
 }

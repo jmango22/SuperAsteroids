@@ -1,5 +1,7 @@
 package edu.byu.cs.superasteroids.model.asteroids;
 
+import android.graphics.Rect;
+
 import java.util.List;
 import java.util.Set;
 
@@ -11,17 +13,21 @@ import edu.byu.cs.superasteroids.model.ship.Laser;
  */
 
 public class GrowingAsteroid extends Asteroid {
+    public GrowingAsteroid(Asteroid parent, float posX, float posY) {
+        super(parent, posX, posY);
+    }
+
     public GrowingAsteroid(Asteroid asteroid) {
         super(asteroid);
-        this.setHealth(1);
     }
 
     @Override
-    public void update(List<Asteroid> asteroids, Set<Laser> lasers) {
-        super.update(asteroids, lasers);
+    public void update() {
+        super.update();
         if((getScaleX() < 3f) && (getScaleY() < 3f)) {
             setScaleX(getScaleX() + .001f);
             setScaleY(getScaleY() + .001f);
         }
     }
+
 }

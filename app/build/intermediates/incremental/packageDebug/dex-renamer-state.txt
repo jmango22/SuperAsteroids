@@ -1,4 +1,7 @@
-#Wed Nov 02 19:05:36 MDT 2016
-base.0=C\:\\Users\\Jon\\Documents\\Android\\SuperAsteroids\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
-renamed.0=classes.dex
-file.0=C\:\\Users\\Jon\\Documents\\Android\\SuperAsteroids\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex
+#Thu Nov 03 15:56:49 MDT 2016
+base.0=C\:\\Users\\mengje\\Documents\\PProjects\\SuperAsteroids\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_12a57513a837eabc98a1626dd1e66cf560c91ceb
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=C\:\\Users\\mengje\\Documents\\PProjects\\SuperAsteroids\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_e3aeb1ca1c2dacf094f38cb05d2756aa0f168976\\classes.dex
+base.1=C\:\\Users\\mengje\\Documents\\PProjects\\SuperAsteroids\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_e3aeb1ca1c2dacf094f38cb05d2756aa0f168976
+file.0=C\:\\Users\\mengje\\Documents\\PProjects\\SuperAsteroids\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_12a57513a837eabc98a1626dd1e66cf560c91ceb\\classes.dex

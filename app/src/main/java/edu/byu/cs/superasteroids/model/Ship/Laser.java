@@ -47,18 +47,13 @@ public class Laser {
         return new PointF(original.x*scaleX, original.y*scaleY);
     }
 
-    public void update(List<Asteroid> asteroids) {
+    public void update() {
         if (adjusting > 0) {
             startingValues();
             adjusting = adjusting - 1;
         } else {
             posX = posX + velocityX;
             posY = posY + velocityY;
-        }
-        for(Asteroid asteroid : asteroids) {
-            if (didHitAsteroid(asteroid)) {
-                hit = true;
-            }
         }
     }
 
@@ -85,8 +80,8 @@ public class Laser {
 
         double angle = GraphicsUtils.degreesToRadians((double)cannon.getRotationDegrees());
 
-        this.velocityX = ((float)Math.sin(angle))*15.0f;
-        this.velocityY = (((float)Math.cos(angle))*15.0f)*-1;
+        this.velocityX = ((float)Math.sin(angle))*10.0f;
+        this.velocityY = (((float)Math.cos(angle))*10.0f)*-1;
     }
 
     private void startingValues() {
@@ -129,23 +124,25 @@ public class Laser {
         return "imageId: "+imageId+" posX: "+posX+" posY: "+posY+" rotationDegrees: "+rotationDegrees+" scaleX: "+scaleX+" scaleY: "+scaleY;
     }
 
-    public PointF getWorldHitPoint() {
+    public Rect getWorldRect() {
         //PointF rotatedPoint = GraphicsUtils.rotate(new PointF(posX, posY), Math.cos(rotationDegrees), Math.sin(rotationDegrees));
-        return ViewPort.viewToWorld(new PointF(posX, posY));
+        float radius = (imageWidth/2f)*scaleX;
+        PointF world =  ViewPort.viewToWorld(new PointF(posX, posY));
+        float left = world.x - radius;
+        float right = world.x +radius;
+        float top = world.y - radius;
+        float bottom = world.y + radius;
+        return new Rect((int)left, (int)top, (int)right, (int)bottom);
     }
 
-    private boolean didHitAsteroid(Asteroid asteroid) {
+    public boolean testCollision(Asteroid asteroid) {
         PointF worldCord = ViewPort.viewToWorld(new PointF(posX, posY));
-        if(asteroid.getWorldRect().contains((int)worldCord.x, (int)worldCord.y)) {
+        if(asteroid.getWorldRect().intersect(getWorldRect())) {
             return true;
         }
         else {
             return false;
         }
-    }
-
-    public boolean isHit() {
-        return hit;
     }
 
     /*

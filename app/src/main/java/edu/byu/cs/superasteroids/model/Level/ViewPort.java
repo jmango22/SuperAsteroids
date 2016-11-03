@@ -23,23 +23,18 @@ public class ViewPort {
     private static int viewWidth;
     private static int viewHeight;
 
-    private Level level;
-    private int levelNumber=0;
+
+    private int levelNumber=1;
+    private Level level = null;
     private static int worldWidth;
     private static int worldHeight;
 
     private static float posX;
     private static float posY;
 
-    private Set<Laser> lasers = new HashSet<>();
-
-    public ViewPort() {
-        getNextLevel();
-    }
-
     public void update() {
         if((viewWidth == 0) || (viewHeight == 0)) {
-            System.out.println("Bad width or height, recalibrating...");
+            //System.out.println("Bad width or height, recalibrating...");
             viewWidth = DrawingHelper.getGameViewWidth();
             viewHeight = DrawingHelper.getGameViewHeight();
             StarShip.getInstance().setLocation(new PointF(((float)viewWidth)/2f, ((float)viewHeight)/2f));
@@ -50,35 +45,13 @@ public class ViewPort {
             getNextLevel();
         }
 
-        level.update(lasers);
-
-        StarShip.getInstance().update();
-
-        if(InputManager.firePressed) {
-            lasers.add(new Laser());
-        }
-
-        for(Iterator<Laser> iterator = lasers.iterator(); iterator.hasNext(); ) {
-            Laser laser = iterator.next();
-            if((!laser.isOffScreen()) && (!laser.isHit())) {
-                laser.update(level.getAsteroids());
-            }
-            else {
-                iterator.remove();
-            }
-        }
+        level.update();
     }
 
     public void draw() {
         background.draw();
 
         level.draw();
-
-        StarShip.getInstance().draw();
-
-        for(Laser laser : lasers) {
-            laser.draw();
-        }
     }
 
     public void loadContent(ContentManager content) {
@@ -93,10 +66,13 @@ public class ViewPort {
 
     private void getNextLevel() {
         levelNumber = levelNumber+1;
-        setLevel(SuperAsteroids_DAO.getInstance().getLevel(levelNumber));
+        Level nextLevel = SuperAsteroids_DAO.getInstance().getLevel(levelNumber);
+        if(nextLevel != null) {
+            setLevel(SuperAsteroids_DAO.getInstance().getLevel(levelNumber));
+        }
     }
 
-    private void setLevel(Level level) {
+    public void setLevel(Level level) {
         this.level = level;
         worldWidth = this.level.getWidth();
         worldHeight = this.level.getHeight();
@@ -104,6 +80,8 @@ public class ViewPort {
         posX = (worldWidth/2)-(viewWidth/2);
         posY = (worldHeight/2)-(viewHeight/2);
     }
+
+    public Level getLevel() { return level; }
 
     public static PointF worldToView(PointF position) {
         return new PointF((position.x - posX), (position.y - posY));
