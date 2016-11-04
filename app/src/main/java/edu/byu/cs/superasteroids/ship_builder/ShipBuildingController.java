@@ -68,8 +68,6 @@ public class ShipBuildingController implements IShipBuildingController {
 
     @Override
     public void unloadContent(ContentManager content) {
-        //System.out.println("Unloading all the images...");
-        //ShipParts.getInstance().unloadUnusedParts();
     }
 
     @Override

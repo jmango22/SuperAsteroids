@@ -1,13 +1,5 @@
 package edu.byu.cs.superasteroids.model.asteroids;
 
-import android.graphics.Rect;
-
-import java.util.List;
-import java.util.Set;
-
-import edu.byu.cs.superasteroids.model.level.ViewPort;
-import edu.byu.cs.superasteroids.model.ship.Laser;
-
 /**
  * Created by Jon on 11/2/2016.
  */

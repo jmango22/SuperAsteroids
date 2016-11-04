@@ -15,17 +15,17 @@ public class GameDelegate implements IGameDelegate {
     public GameDelegate() {
         viewPort.setLevel(SuperAsteroids_DAO.getInstance().getLevel(1));
         StarShip.getInstance().setHealth(10);
+        StarShip.getInstance().setSafeTime(180);
     }
 
     @Override
     public void update(double elapsedTime) {
-        //Called 60 times a second
         viewPort.update();
     }
 
     @Override
     public void loadContent(ContentManager content) {
-       viewPort.loadContent(content);
+        viewPort.loadContent(content);
     }
 
     @Override
@@ -35,7 +35,6 @@ public class GameDelegate implements IGameDelegate {
 
     @Override
     public void draw() {
-        //Called 60 times a second
         viewPort.draw();
     }
 }

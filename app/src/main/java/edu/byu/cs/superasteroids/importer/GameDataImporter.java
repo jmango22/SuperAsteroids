@@ -99,7 +99,6 @@ public class GameDataImporter implements IGameDataImporter {
     }
 
     private static String makeString(Reader reader) throws IOException {
-
         StringBuilder sb = new StringBuilder();
         char[] buf = new char[512];
 

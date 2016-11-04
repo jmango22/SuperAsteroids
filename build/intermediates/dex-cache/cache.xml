@@ -2,49 +2,31 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="C:\Users\mengje\Documents\PProjects\SuperAsteroids\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="c62dd66fd62bab5e876b476836648855b0b2ce00">
-        <dex dex="C:\Users\mengje\Documents\PProjects\SuperAsteroids\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_e3aeb1ca1c2dacf094f38cb05d2756aa0f168976\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mengje\Documents\PProjects\SuperAsteroids\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="1003ba85206f70d4e20da5fbeee6509698c646ce">
-        <dex dex="C:\Users\mengje\Documents\PProjects\SuperAsteroids\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_12a57513a837eabc98a1626dd1e66cf560c91ceb\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mengje\Documents\PProjects\SuperAsteroids\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.1.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28">
-        <dex dex="C:\Users\mengje\Documents\PProjects\SuperAsteroids\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-19.1.0_fdc4e6784a473d95337c9e7a2845ffe87a366d93\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mengje\Documents\PProjects\SuperAsteroids\app\libs\json-simple-1.1.1.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/users/guest/j/jmeng2/Documents/SuperAsteroids/app/libs/json-simple-1.1.1.jar"
+        jumboMode="false"
         optimize="true"
         revision="23.0.2"
         sha1="5d6f9b6a9ddca2a28c0216cc44efb2e20d9c23b5">
-        <dex dex="C:\Users\mengje\Documents\PProjects\SuperAsteroids\app\build\intermediates\transforms\dex\debug\folders\1000\2\json-simple-1.1.1_196124a1d86908a0cb56069507b4b26a395d96dc\classes.dex" />
+        <dex dex="/users/guest/j/jmeng2/Documents/SuperAsteroids/app/build/intermediates/pre-dexed/debug/json-simple-1.1.1_89a114d05fa66a061c16a4dfe3341d63ac543355.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="C:\Users\mengje\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/users/guest/j/jmeng2/Documents/SuperAsteroids/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28">
+        <dex dex="/users/guest/j/jmeng2/Documents/SuperAsteroids/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-19.1.0_5557bea1ee46135b670bf98c7fdae710f85f9eb8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/users/guest/j/jmeng2/Android/Sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
+        jumboMode="false"
         optimize="true"
         revision="23.0.2"
         sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
-        <dex dex="C:\Users\mengje\Documents\PProjects\SuperAsteroids\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-v4-19.1.0_1dc6fe4b2230870b1e986f542b87d5852f0a8b1c\classes.dex" />
+        <dex dex="/users/guest/j/jmeng2/Documents/SuperAsteroids/app/build/intermediates/pre-dexed/debug/support-v4-19.1.0_1aaff37caa58abd693d4dd6972776d62ca370596.jar" />
     </item>
 
 </items>
